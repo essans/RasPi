@@ -7,6 +7,12 @@ import re
 import sys
 from ipwhois import IPWhois
 
+#extracts access info from ufw.log and auth.log.
+#checks IP address for external access (or attempted access)
+#query whois service for identity
+#stores new records, then writes to file
+#run via  crontab -e
+#0,15,30,45 * * * * python3 /home/pi/code/cron/access_log.py
 
 def src_details(ip_addr):
 
