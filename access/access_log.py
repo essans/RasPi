@@ -20,12 +20,9 @@ def src_details(ip_addr):
 
 	if (ip_addr in ['None','0.0.0.0']) or (ip_addr[0:7]=='192.168'):
 		src['name'] = ''
-		#src['descr'] = ''
 		src['cntry'] = ''
 		src['city'] = ''
-		#src['state'] = ''
 		src['addr'] = ''
-		#src['emails'] = ''
 
 	else:
 
@@ -33,18 +30,14 @@ def src_details(ip_addr):
 		res = obj.lookup_whois()
 
 		src['name'] = res['nets'][0]['name']
-		#src['descr'] = res['nets'][0]['description']
 
 		src['cntry'] = res['nets'][0]['country']
 		src['city'] = res['nets'][0]['city']
-		#src['state'] = res['nets'][0]['state']
 
-		#if scr['addr'] is not None:
-		#	src['addr'] = res['nets'][0]['address'].replace('\n',',')
-		#else:
-		#	src['addr']=''
-
-		#src['emails'] = str(res['nets'][0]['emails'])
+		if scr['addr'] is not None:
+			src['addr'] = res['nets'][0]['address'].replace('\n',',')
+		else:
+			src['addr']=''
 
 	return src
 
