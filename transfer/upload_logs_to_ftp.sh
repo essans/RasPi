@@ -5,7 +5,7 @@
 #2,17,32,47 * * * * sh /home/pi/code/cron/upload_logs_to_ftp.sh
 
 
-HOST='ftp://ftp.raspi.domain.com'
+HOST='ftp://ftp.raspi.soobratty.com'
 USER='user'
 PASSWORD='password'
 
