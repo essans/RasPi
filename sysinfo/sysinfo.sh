@@ -22,10 +22,10 @@ volts_sdrami=`vcgencmd measure_volts sdram_i|grep -o "[0-9]*\.[0-9]*"`
 volts_sdramp=`vcgencmd measure_volts sdram_p|grep -o "[0-9]*\.[0-9]*"`
 
 
-mem_free=`free -h | awk 'NR==2{print \$4}'`
+mem_free=`free --mega | awk 'NR==2{print \$4}'`
 
-mem_arm=`vcgencmd get_mem arm|grep -o "[0-9]*[A-Z]*"`
-mem_gpu=`vcgencmd get_mem gpu|grep -o "[0-9]*[A-Z]*"`
+mem_arm=`vcgencmd get_mem arm|grep -o "[0-9]*"` #[A-Z]*
+mem_gpu=`vcgencmd get_mem gpu|grep -o "[0-9]*"`
 
 throttled_status=`vcgencmd get_throttled |grep -o "[0-9]*x[0-9]*"`
 
@@ -87,7 +87,7 @@ printf "%-25s %-15s\n" "gpu_allocMem" "$mem_gpu" #gpu allocated memory
 
 echo ' '
 
-printf "%-25s %-15s\n" "throttled_status=$throttled_status"
+printf "%-25s %-15s\n" "throttled_status" "$throttled_status"
 
 echo ' '
 
