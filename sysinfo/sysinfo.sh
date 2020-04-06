@@ -87,7 +87,7 @@ printf "%-25s %-15s\n" "gpu_allocMem" "$mem_gpu" #gpu allocated memory
 
 echo ' '
 
-printf "%-25s %-15s\n" "throttled_status='$throttled_status"
+printf "%-25s %-15s\n" "throttled_status=$throttled_status"
 
 echo ' '
 
