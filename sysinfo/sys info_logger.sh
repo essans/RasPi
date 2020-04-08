@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 #Execute via crontab -e
-#0,15,30,45 * * * * sh /home/pi/code/bash/sysinfo_logger.sh >> /home/pi/log/sysinfo.log
+#0,15,30,45 * * * * bash /home/pi/code/bash/sysinfo_logger.sh >> /home/pi/log/sysinfo.log
 
 sysinfo_attr=$(/home/pi/code/bash/sysinfo.sh | awk '{print $1}' | tr -d "=" | sed 's/SYSTEM_INFORMATION//g' | sed 's/   //g')
 
