@@ -35,3 +35,4 @@ headertosave=${headertosave::-1}
 
 recordtosave=${recordtosave::-1}
 
+echo $recordtosave
