@@ -1,1 +1,1 @@
-Info relating to getting info, tracking and logging access to the pi
+Info relating to raspberry pi system info, tracking, logging access, and sending out alerts via twitter, email, etc
