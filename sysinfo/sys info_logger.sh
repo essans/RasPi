@@ -1,6 +1,9 @@
-!/bin/bash 
+#!/bin/bash 
 
-#sysinfo_attr=$(/home/pi/code/bash/sysinfo.sh | awk '{print $1}' | tr -d "=" | sed 's/SYSTEM_INFORMATION//g' | sed 's/   //g')
+#Execute via crontab -e
+#0,15,30,45 * * * * python3 /home/pi/code/bash/sysinfo_logger.sh >> /home/pi/log/sysinfo.log
+
+sysinfo_attr=$(/home/pi/code/bash/sysinfo.sh | awk '{print $1}' | tr -d "=" | sed 's/SYSTEM_INFORMATION//g' | sed 's/   //g')
 
 sysinfo=$(/home/pi/code/bash/sysinfo.sh)
 
