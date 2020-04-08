@@ -2,7 +2,7 @@
 
 #uploads changes to logs to ftp
 #runs via cron:
-#2,17,32,47 * * * * sh /home/pi/code/cron/upload_logs_to_ftp.sh
+#2,17,32,47 * * * * bash /home/pi/code/cron/upload_logs_to_ftp.sh
 
 
 HOST='ftp://ftp.raspi.soobratty.com'
