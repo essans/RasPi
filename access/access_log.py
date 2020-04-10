@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+#extracts access info from ufw.log and auth.log.
+#checks IP address for external access (or attempted access)
+#query whois service for identity
+#stores new records, then writes to file
+#run via  crontab -e
+#0,15,30,45 * * * * python3 /home/pi/code/cron/access_log.py 
+
+
 import subprocess
 import pandas as pd
 import time
@@ -7,12 +15,8 @@ import re
 import sys
 from ipwhois import IPWhois
 
-#extracts access info from ufw.log and auth.log.
-#checks IP address for external access (or attempted access)
-#query whois service for identity
-#stores new records, then writes to file
-#run via  crontab -e
-#0,15,30,45 * * * * python3 /home/pi/code/cron/access_log.py
+uname = subprocess.call('hostname -s',shell=True)
+
 
 def src_details(ip_addr):
 
@@ -20,9 +24,12 @@ def src_details(ip_addr):
 
 	if (ip_addr in ['None','0.0.0.0']) or (ip_addr[0:7]=='192.168'):
 		src['name'] = ''
+		#src['descr'] = ''
 		src['cntry'] = ''
 		src['city'] = ''
+		#src['state'] = ''
 		src['addr'] = ''
+		#src['emails'] = ''
 
 	else:
 
@@ -30,14 +37,18 @@ def src_details(ip_addr):
 		res = obj.lookup_whois()
 
 		src['name'] = res['nets'][0]['name']
+		#src['descr'] = res['nets'][0]['description']
 
 		src['cntry'] = res['nets'][0]['country']
 		src['city'] = res['nets'][0]['city']
+		#src['state'] = res['nets'][0]['state']
 
-		if scr['addr'] is not None:
-			src['addr'] = res['nets'][0]['address'].replace('\n',',')
-		else:
-			src['addr']=''
+		#if scr['addr'] is not None:
+		#	src['addr'] = res['nets'][0]['address'].replace('\n',',')
+		#else:
+		#	src['addr']=''
+
+		#src['emails'] = str(res['nets'][0]['emails'])
 
 	return src
 
@@ -49,7 +60,10 @@ def to_epoch(datetime,timeformat):
 
 
 #load prior log file & get epoch for last lines
-df_old = pd.read_csv("/home/pi/log/access.log", sep="|",header=None)
+
+file_to_load = "/home/pi/log/"+uname+"_access.log"
+
+df_old = pd.read_csv(file_to_load, sep="|",header=None)
 
 ufw_last_epoch = float(df_old[df_old.iloc[:,2]=="ufw"].iloc[-1:,0])
 auth_last_epoch = float(df_old[df_old.iloc[:,2]=="sshd"].iloc[-1:,0])
@@ -66,7 +80,7 @@ ufw_datetime_cmd = 'grep -va AUDIT /home/pi/log/ufw.log.tmp | grep -va SRC=192. 
 
 #bash commands to grep required authlog information
 auth_ip_cmd = 'grep -a sshd /home/pi/log/auth.log.tmp | cut -d"]" -f2,3'
-auth_datetime_cmd = 'grep -a sshd /home/pi/log/auth.log.tmp | awk "{print \$1, \$2, \$3}"' 
+auth_datetime_cmd = 'grep -a sshd /home/pi/log/auth.log.tmp | awk "{print \$1, \$2, \$3}"'      #cut -d" " -f1,2,3'
 
 #copy log files
 subprocess.call(ufw_snapshot_cmd,shell=True)
@@ -154,5 +168,7 @@ df.columns = df_old.columns
 
 df = pd.concat([df_old,df],axis=0).reset_index(drop=True)
 
+file_to_save = "/home/pi/log/"+uname+"_access.log"
 
-df.to_csv("/home/pi/log/access.log", sep="|", mode = "w",header=None,index=None)
+
+df.to_csv(file_to_save, sep="|", mode = "w",header=None,index=None)
