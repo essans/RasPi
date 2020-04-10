@@ -2,7 +2,7 @@
 
 
 #add following line to ~/.bashrc to create an alias
-#sysinfo='/home/pi/code/bash/sysinfo.sh'
+#alias sysinfo='/home/pi/code/bash/sysinfo.sh'
 
 #can also auto-run via crontab -e and dump to a file
 #0,15,30,45 * * * * bash /home/pi/code/bash/sysinfo.sh > /home/pi/log/$(uname -n)_sysinfo.dump
