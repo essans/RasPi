@@ -2,7 +2,7 @@
 
 HOST='raspi.soobratty.com'
 USER='raspi'
-PASSWORD='vYah%(RZCHE!&cbpSwDD'
+PASSWORD=''
 
 cd /home/pi/log
 
