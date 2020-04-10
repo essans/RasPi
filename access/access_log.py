@@ -15,7 +15,7 @@ import re
 import sys
 from ipwhois import IPWhois
 
-uname = subprocess.call('hostname -s',shell=True)
+uname = subprocess.check_output('hostname -s',shell=True).decode('utf-8').rstrip('\n')
 
 
 def src_details(ip_addr):
