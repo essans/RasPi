@@ -5,7 +5,7 @@
 #sysinfo='/home/pi/code/bash/sysinfo.sh'
 
 #can also auto-run via crontab -e and dump to a file
-#0,15,30,45 * * * * bash /home/pi/code/bash/sysinfo_logger.sh >> /home/pi/log/$(uname -n)_sysinfo.log
+#0,15,30,45 * * * * bash /home/pi/code/bash/sysinfo.sh > /home/pi/log/$(uname -n)_sysinfo.dump
 
 
 users=`uptime | grep -o '[0-9]* user[s]' | grep -o '[0-9]*'`
