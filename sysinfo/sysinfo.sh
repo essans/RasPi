@@ -20,6 +20,8 @@ soc_temp2=`cat /sys/class/thermal/thermal_zone0/temp`
 soc_temp2=`echo "scale=2; $soc_temp2/1000" |bc`
 pmic_temp=`vcgencmd measure_temp pmic | grep -o "[0-9]*\.[0-9]*"`
 
+cpu_idle=`top -b -n 1 | sed -n "s/^%Cpu.*ni, \([0-9.]*\) .*$/\1/p"`
+
 
 volts_core=`vcgencmd measure_volts core|grep -o "[0-9]*\.[0-9]*"`
 volts_sdramc=`vcgencmd measure_volts sdram_c|grep -o "[0-9]*\.[0-9]*"`
@@ -83,6 +85,11 @@ printf "%-25s %-15s\n" "SoC_temp2" "$soc_temp2"  #ditto
 
 
 printf "%-25s %-15s\n" "pmic_temp" "$pmic_temp" #pmic temperature
+
+echo ' '
+
+printf "%-25s %-15s\n" "cpu_idle" "$cpu_idle"
+
 
 echo ' '
 
