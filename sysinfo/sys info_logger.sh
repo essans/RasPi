@@ -1,17 +1,19 @@
 #!/bin/bash
 
 #Execute via crontab -e
-#0,15,30,45 * * * * bash /home/pi/code/bash/sysinfo_logger.sh >> /home/pi/log/$(uname -n)_sysinfo.log
+#0,15,30,45 * * * * bash /home/pi/code/bash/sysinfo_logger.sh >> /home/pi/log/sysinfo.log
 
+uname=`hostname -s`
 
-#sysinfo_attr=$(/home/pi/code/bash/sysinfo.sh | awk '{print $1}' | tr -d "=" | sed 's/SYSTEM_INFORMATION//g' | sed 's/   //g')
 
 sysinfo=$(/home/pi/code/bash/sysinfo.sh)
 
+echo "{$sysinfo}" > /home/pi/log/$uname"_sysinfodump.log"
+
 sysinfo_attr=$(echo "$sysinfo" | awk '{print $1}' | tr -d "=" | sed 's/SYSTEM_INFORMATION//g' | sed 's/   //g')
 
+#sysinfo_attr=$(/home/pi/code/bash/sysinfo.sh | awk '{print $1}' | tr -d "=" | sed 's/SYSTEM_INFORMATION//g' | sed 's/   //g')
 
-#echo $sysinfo
 
 attributes=$(echo $sysinfo_attr)
 
@@ -22,16 +24,16 @@ quote="\""
 
 for attr in $attributes
 do
-	headertosave+="${attr},"
+        headertosave+="${attr},"
 
 
-	value=$(echo "$sysinfo" | awk "/(^$attr)/" | awk '{$1="";print $0}')
+        value=$(echo "$sysinfo" | awk "/(^$attr)/" | awk '{$1="";print $0}')
 
-	value=${value:1}
+        value=${value:1}
 
-	kv_pair="$quote${attr}$quote:$quote${value}$quote"
+        kv_pair="$quote${attr}$quote:$quote${value}$quote"
 
-	recordtosave+="${kv_pair}, "
+        recordtosave+="${kv_pair}, "
 
 
 done
