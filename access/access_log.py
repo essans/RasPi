@@ -17,7 +17,6 @@ from ipwhois import IPWhois
 
 uname = subprocess.check_output('hostname -s',shell=True).decode('utf-8').rstrip('\n')
 
-
 def src_details(ip_addr):
 
 	src = {}
