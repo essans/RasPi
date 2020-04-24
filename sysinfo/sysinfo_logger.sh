@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Execute via crontab -e
-#0,15,30,45 * * * * bash /home/pi/code/bash/sysinfo_logger.sh >> /home/pi/log/sysinfo.log
+#0,15,30,45 * * * * bash /home/pi/code/bash/sysinfo_logger.sh >> /home/pi/log/$(uname -n)_sysinfo.log
 
 uname=`hostname -s`
 
