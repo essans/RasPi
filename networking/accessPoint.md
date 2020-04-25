@@ -34,27 +34,176 @@ sudo systemctl stop hostapd
 sudo systemctl stop dnsmasq
 ```
 
-#### (4) Configure static IP addresses for the wlan0 and eth0 interfaces
-It is the bridge (which will be created later) that is the network device.  So we need to stop the eth0 and wlan0ports being allocated IP addresses by the DHCP #client on the Raspberry Pi.
+#### (4) Edit the dhcpcd configuration file
 
 ```
-denyinterfaces wlan0    #These two lines were added later after lots of trial and error 
-denyinterfaces eth0     #Both are needed to ensure that the bridge works correctly
+sudo nano /etc/dhcpcd.conf
+```
 
+```
+#These first two lines were added later after lots of trial and error. 
+#Both are needed to ensure that the bridge works correctly.
+#They stop the eth0 and wlan0 ports being allocated IP 
+#addresses by the DHCP client on the Raspberry Pi
+
+denyinterfaces wlan0    
+denyinterfaces eth0     
+
+
+#Next configure a static IP for the wlan0 interface
 
 interface wlan0
 static ip_address=192.168.4.1/24
 nohook wpa_supplicant
 
 
-# static IP address to enable ssh and also accessing inet fro pi
-# this bit was discovered after some trial and error
+#static IP address to enable ssh and also accessing 
+#the internet from the raspberry pi.
+#This bit was discovered after some trial and error...
 
 interface br0
 static ip_address=192.168.1.184/24. <--- s
 static routers=192.168.1.1
 static domain_name_servers=8.8.8.8
 ```
+
+#### (5) Now restart the service
+
+```
+sudo service dhcpcd restart
+```
+
+#### (6) Edit this fine to configure the DHCP server
+
+```
+sudo nano /etc/dnsmasq.conf
+```
+
+...and add the following to the end of the file:
+
+```
+interface=wlan0
+dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
+
+```
+
+The way to undersand this is that for ```wlano``` we are going to provide IP addresses between 192.168.4.2 and 192.168.4.20, with a lease time of 24 hours. If you are providing DHCP services for other network devices (e.g. eth0), you could add more sections with the appropriate interface header, with the range of addresses you intend to provide to that interface.
+
+There are many more options for dnsmasq.  See [dnsmasq documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for more details.
+
+#### (7) Restart service
+
+```
+sudo systemctl start dnsmasq
+```
+
+#### (8) Configure the access point host software
+
+```
+sudo nano /etc/hostapd/hostapd.conf
+```
+
+```
+interface=wlan0
+#driver=nl80211
+bridge=br0
+hw_mode=g
+channel=7
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+ssid=RASPI-NET
+wpa_passphrase=<password_goes_here>
+```
+
+The commented out ```driver=nl80211``` would have been needed if using as stand-alone access point without bridge.
+
+```hw_mode``` options:
+To use the 5 GHz band, you can change the operations mode from hw_mode=g to hw_mode=a. Possible values for hw_mode are:
+
+* a = IEEE 802.11a (5 GHz)
+* b = IEEE 802.11b (2.4 GHz)
+* g = IEEE 802.11g (2.4 GHz)
+* ad = IEEE 802.11ad (60 GHz) (Not available on the Raspberry Pi)
+
+#### (9) Now, edit the following file as we need to tell the system where to find the configuration file:
+
+```
+sudo nano /etc/default/hostapd
+```
+
+Find the line with #DAEMON_CONF, and replace it with this:
+
+```
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+```
+
+#### (10) Enable and start hostpad
+
+```
+sudo systemctl unmask hostapd
+sudo systemctl enable hostapd
+sudo systemctl start hostapd
+```
+
+and check status:
+
+```
+sudo systemctl status hostapd
+sudo systemctl status dnsmasq
+```
+
+#### (11) Add routing and masquerade by first...
+
+editing:
+
+```
+sudo nano /etc/sysctl.conf
+```
+
+and uncommenting and enabling:
+
+```
+net.ipv4.ip_forward=1
+```
+
+#### (12) and then, add a masquerade for outbound traffic on eth0:
+
+```
+sudo iptables -t nat -A  POSTROUTING -o eth0 -j MASQUERADE
+```
+
+#### (13) Save the iptables rule
+
+```
+sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+```
+
+#### (14) Edit the following file:
+
+```
+sudo nano /etc/rc.local
+```
+
+and add this just above “exit 0” to install these rules on boot:
+
+```
+iptables-restore < /etc/iptables.ipv4.nat
+```
+
+#### (15) Reboot
+
+```
+sudo reboot
+```
+
+***
+
 
 
 
