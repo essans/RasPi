@@ -26,9 +26,20 @@ sudo nano ~/etc/ssh/sshd_config
 
 ```
 # change from 21 to something less obvious.  Mirror on router config
-
 Port 21
 
 PasswordAuthentication no
 
+```
+
+<br>
+
+```
+sudo service ssh restart
+```
+
+Check that the selected port is listening:
+
+```
+netstat -tnl
 ```
