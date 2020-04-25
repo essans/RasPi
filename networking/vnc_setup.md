@@ -51,4 +51,6 @@ Following might be needed:
 sudo apt-install tightvncserver
 ```
 
+After done with VNC access we then need to change back the ```raspi-config``` settings.
+
 
