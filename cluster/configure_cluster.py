@@ -43,11 +43,23 @@ user   = "pi"
 password = ""
 m_password = ''  #master
 
-if args.m in ['Y','y']:
-        c = Connection(master,user=user,connect_kwargs={"password": m_password})
-        result = c.run(args.c)
 
+if args.m in ['Y','y']:
+
+	try:
+		c = Connection(master,user=user,connect_kwargs={"password": m_password})
+		result = c.run(args.c)
+
+	except:
+		print("Problem with master node")
+
+                
 for host in hosts:
-        c = Connection(host,user=user,connect_kwargs={"password": password})
-        result = c.run(args.c)
+
+	try:
+		c = Connection(host,user=user,connect_kwargs={"password": password})
+		result = c.run(args.c)
+
+	except:
+		print("Problem with "+host)
   
