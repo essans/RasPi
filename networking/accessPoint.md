@@ -124,12 +124,12 @@ wpa_passphrase=<password_goes_here>
 The commented out ```driver=nl80211``` would have been needed if using as stand-alone access point without bridge.
 
 ```hw_mode``` options:
-To use the 5 GHz band, you can change the operations mode from hw_mode=g to hw_mode=a. Possible values for hw_mode are:
+>> To use the 5 GHz band, you can change the operations mode from hw_mode=g to hw_mode=a. Possible values for hw_mode are:
 
-* a = IEEE 802.11a (5 GHz)
-* b = IEEE 802.11b (2.4 GHz)
-* g = IEEE 802.11g (2.4 GHz)
-* ad = IEEE 802.11ad (60 GHz) (Not available on the Raspberry Pi)
+>> * a = IEEE 802.11a (5 GHz)
+>> * b = IEEE 802.11b (2.4 GHz)
+>> * g = IEEE 802.11g (2.4 GHz)
+>> * ad = IEEE 802.11ad (60 GHz) (Not available on the Raspberry Pi)
 
 #### (9) Now, edit the following file as we need to tell the system where to find the configuration file:
 
@@ -204,10 +204,98 @@ sudo reboot
 
 ***
 
+Using a wireless device, search for networks.<br>
 
+The network SSID specified in the ```hostapd``` configuration should discoverable, and it should be accessible with the specified password.
 
+If SSH is enabled on the Raspberry Pi access point, it should be possible to connect to it as follows, assuming the pi account is present:
+
+```
+ssh pi@192.168.4.1
+```
+
+Rpi is is acting as an access point and other devices can associate with it.  Associated devices can access the raspberry pi access point via its IP address for operations such as “rsync”, “scp” or “ssh”.
 
 ***
+
+### Using the Raspberry Pi as an access point to share an internet connection (bridge)
+
+Now, I want to use raspi-4a as an access point to provide wireless internet access to other devices.  I also want the rasp-a to be able to access the internet via the ethernet connection.
+
+To do this, a 'bridge' needs to put in place between the wireless device and the Ethernet device on the access point Raspberry Pi. This bridge will pass all traffic between the two interfaces. 
+
+```
+sudo apt install bridge-utils
+
+sudo systemctl stop hostapd
+
+sudo brctl addbr br0   #add the bridge
+
+sudo brctl addif br0 eth0   #make the connection
+
+```
+
+Create a file in order to create a linux bridge (br0) and add a physical interface (eth0) to the bridge:
+
+```
+sudo nano /etc/systemd/network/bridge-br0.netdev
+```
+
+```
+[NetDev]
+Name=br0
+Kind=bridge
+```
+
+Next, configure the bridge interface ```br0``` and the slave interface ```eth0``` using ```.network``` files as follows:
+
+```
+sudo nano /etc/systemd/network/bridge-br0-slave.network
+```
+
+```
+[Match]
+Name=eth0
+
+[Network]
+Bridge=br0
+```
+
+```
+sudo nano /etc/systemd/network/bridge-br0.network
+```
+
+```
+[Match]
+Name=br0
+
+
+[Network]
+Address=192.168.10.100/24
+Gateway=192.168.10.1
+DNS=8.8.8.8
+```
+
+```
+sudo systemctl restart systemd-networkd
+```
+
+We can also use the ```brctl``` tool to verify that a bridge ```br0``` has been created.  Next reboot and then:
+
+```
+sudo systemctl unmask hostapd
+sudo systemctl enable hostapd
+sudo systemctl start hostapd
+```
+
+There should now be a functioning bridge between the wireless LAN and the Ethernet connection on the Raspberry Pi, and any device associated with the Raspberry Pi access point will act as if it is connected to the access point's wired Ethernet.
+The bridge will have been allocated an IP address via the wired Ethernet's DHCP server. Do a quick check of the network interfaces configuration via:
+
+```
+ip addr
+```
+***
+
 
 ### References
 
