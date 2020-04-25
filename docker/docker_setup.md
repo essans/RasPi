@@ -80,7 +80,9 @@ WARNING: Adding a user to the "docker" group will grant the ability to run
 
 ```
 
-allow docker to be used without sudo
+<br>
+
+#### Allow docker to be used without sudo
 
 ```
 sudo usermod -aG docker pi
