@@ -19,10 +19,12 @@ sudo get-apt upgrade
 
 <br>
 
-```
-curl -fsSL https://get.docker.com -o get-docker.sh   #d/l installation script
+#### Download installation script and the run
 
-sudo sh get-docker.sh    # run script
+```
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+sudo sh get-docker.sh
 ```
 
 ```
