@@ -7,9 +7,11 @@ I also have a number of other Raspberry Pi boards that connect to my wifi router
 
 It took quite a bit of trial and error as I wanted to the raspi-4a to continue functioning as a Raspberry Pi board with its own access to the internet via the ethernet connection.  These are the sequential steps that ultimately resulted in achieving this objective.
 
-At the bottom of this note are the various sources of information used
+At the bottom of this note are the various sources of information used.
 
 ***
+
+### Steps to follow:
 
 #### (1) Make sure system is updated:
 
