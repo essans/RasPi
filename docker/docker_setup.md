@@ -93,8 +93,6 @@ sudo usermod -aG docker pi
 This should work as a test:
 
 ```
-
-```
 docker version
 
 docker info
