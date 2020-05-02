@@ -62,7 +62,7 @@ nohook wpa_supplicant
 #This bit was discovered after some trial and error...
 
 interface br0
-static ip_address=192.168.1.184/24. <--- s
+static ip_address=192.168.1.184/24
 static routers=192.168.1.1
 static domain_name_servers=8.8.8.8
 ```
