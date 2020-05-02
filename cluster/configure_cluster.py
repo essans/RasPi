@@ -69,7 +69,7 @@ if args.m in ['Y','y']:
 if args.n !=99:
 
 	if args.v in ['Y','y']:
-                print('\n >>> ATTEMPTING NODE: '+str(arg.n)+'\n')
+                print('\n >>> ATTEMPTING NODE: '+str(args.n)+'\n')
 
 	try:
 		c = Connection(hosts[args.n-1],user=user,connect_kwargs={"password": password})
