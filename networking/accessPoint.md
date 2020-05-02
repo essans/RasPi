@@ -73,7 +73,7 @@ static domain_name_servers=8.8.8.8
 sudo service dhcpcd restart
 ```
 
-#### (6) Edit this fine to configure the DHCP server
+#### (6) Edit this file to configure the DHCP server
 
 ```
 sudo nano /etc/dnsmasq.conf
