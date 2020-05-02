@@ -76,7 +76,7 @@ if args.n !=99:
 		result = c.run(args.c)
 
 	except:
-		print("Problem with node "+args.n+'\n')
+		print("Problem with node "+str(args.n)+'\n')
 
 	sys.exit()	
 
@@ -93,4 +93,4 @@ for node,host in enumerate(hosts):
 		result = c.run(args.c)
 
 	except:
-		print("Problem with node "+host+'\n')
+		print("Problem with node "+str(node)+'\n')
