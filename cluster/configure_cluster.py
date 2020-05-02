@@ -93,4 +93,4 @@ for node,host in enumerate(hosts):
 		result = c.run(args.c)
 
 	except:
-		print("Problem with node "+str(node)+'\n')
+		print("Problem with node "+str(node+1)+'\n')
