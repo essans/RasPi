@@ -1,2 +1,2 @@
 # RasPi
-Configurations, code, hacks and other stuff for Raspberry Pi
+Projects, configurations, code, hacks and other stuff for Raspberry Pi
