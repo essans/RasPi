@@ -34,9 +34,13 @@ network={
 ```
 Save the file and exit.  Unmount and eject the SD card and insert into the Raspberry Pi and power on.
 
+<br>
+
 (5) Login into the router portal via ```http://192.168.1.1``` in order to find out what IP address the router has assigned to the new device that is now connected to the LAN.  I coule also have used a network scanner.  Then ssh into the pi:
 
 ```ssh pi@192.168.1.186```
+
+<br>
 
 (6) Update OS and software in the usual way:
 
@@ -46,9 +50,13 @@ sudo apt-get update
 sudo apt-get upgrade    #or full-upgrade
 ```
 
+<br>
+
 (7) While likely not necessary any more I ensure the file system is expanded:
 
 ```sudo raspi-config --expand-rootfs```
+
+<br>
 
 (8) and then update the usual things:
 
@@ -64,6 +72,8 @@ sudo raspi-config
 
 Also [set-up](https://github.com/essans/RasPi/blob/master/networking/vnc_setup.md) vnc access in case needed later.
 
+<br>
+
 (9) Install python in case not already installed, along with the [fabric package](http://www.fabfile.org) that I will need later.
 
 ```sh
@@ -75,6 +85,7 @@ sudo pip3 install fabric
 Basic set-up of the master node is now complete.
 
 ----
+<br>
 
 #### Configure Master Node as conduit for cluster internet access.
 
@@ -87,6 +98,8 @@ sudo apt-get install dnsmasq
 
 sudo systemctl stop dnsmasq
 ```
+
+<br>
 
 (2) Edit the DHCP client daemon configuration file
 ```sh
@@ -101,6 +114,8 @@ static ip_address=192.168.5.1/24   # I'm sure these addresses are not being assi
 ```
 
 ```sudo service dhcpcd restart```
+
+<br>
 
 {wip}
 
