@@ -106,7 +106,7 @@ sudo systemctl stop dnsmasq
 sudo nano /etc/dhcpcd.conf
 ```
 
-...and add the following at the bottom:
+...adding the following at the bottom:
 
 ```sh
 interface eth0
