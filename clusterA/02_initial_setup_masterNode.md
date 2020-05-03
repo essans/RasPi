@@ -113,6 +113,8 @@ interface eth0
 static ip_address=192.168.5.1/24 
 ```
 
+Save and exit, and then
+
 ```sudo service dhcpcd restart```
 
 <br>
