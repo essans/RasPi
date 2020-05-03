@@ -1,0 +1,123 @@
+### Set-up of Master Node
+
+#### First, install and configure operating system
+For this cluster I will use the "Rasbian" operating system which is based on the debian linux distribution and provided by the Raspberry Pi Foundation.
+
+(1) Download and save in a folder the latest Rasbian images from [here](https://www.raspberrypi.org/downloads/raspbian/)
+  - For the master node use the [full version](https://downloads.raspberrypi.org/raspbian_full_latest)
+  - For the worker nodes use [light version](https://downloads.raspberrypi.org/raspbian_lite_latest) which does not have a GUI, nor any of the other software.
+    
+(2) Flash the image onto an SD Card using [etcher](https://www.balena.io/etcher/) for Mac OS. 
+
+(3) In the boot partition I create an empty file to enable ssh
+
+```bash
+sudo diskutil mount /dev/disk2s1  #or whatever the boot partition is
+
+cd /volumes/boot
+
+touch ssh
+```
+
+(4) Enable connection to wifi by creating a ```wpa_supplicant.conf``` file in the same boot partition and input following information:
+
+```bash
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+    ssid="NETWORK-NAME"
+    psk="NETWORK-PASSWORD"
+    key_mgmt=WPA-PSK
+}
+```
+Save the file and exit.  Unmount and eject the SD card and insert into the Raspberry Pi and power on.
+
+(5) Login into the router portal via ```http://192.168.1.1``` in order to find out what IP address the router has assigned to the new device that is now connected to the LAN.  I coule also have used a network scanner.  Then ssh into the pi:
+
+```ssh pi@192.168.1.186```
+
+(6) Update OS and software in the usual way:
+
+```bash
+sudo apt-get update
+
+sudo apt-get upgrade    #or full-upgrade
+```
+
+(7) While likely not necessary any more I ensure the file system is expanded:
+
+```sudo raspi-config --expand-rootfs```
+
+(8) and then update the usual things:
+
+```bash
+sudo raspi-config
+
+#password
+#locale
+#timezone
+#hostname --> raspi-4b
+#enable vnc
+```
+
+Also [set-up](https://github.com/essans/RasPi/blob/master/networking/vnc_setup.md) vnc access in case needed later.
+
+(9) Install python in case not already installed, along with the [fabric package](http://www.fabfile.org) that I will need later.
+
+```sh
+sudo apt install python3-pip
+
+sudo pip3 install fabric
+```
+
+Basic set-up of the master node is now complete.
+
+----
+
+#### Configure Master Node as conduit for cluster internet access.
+
+I want the Master Node to be the only device on the cluster that actually connects to the internet. When worker nodes require internet access then the will connect via the Master Node if allowed.  The set-up here is based on what was learned when configuring another Raspberry Pi to provide service as a secondary [access point](https://github.com/essans/RasPi/blob/master/networking/accessPoint.md).
+
+(1) Install the linux command line utility [dnsmasq](https://en.wikipedia.org/wiki/Dnsmasq) and then stop the service before make the configuration changes
+
+```sh
+sudo apt-get install dnsmasq
+
+sudo systemctl stop dnsmasq
+```
+
+(2) Edit the DHCP client daemon configuration file
+```sh
+sudo nano /etc/dhcpcd.conf
+```
+
+...and add the following at the bottom:
+
+```sh
+interface eth0
+static ip_address=192.168.5.1/24   # I'm sure these addresses are not being assigned by my router
+```
+
+```sudo service dhcpcd restart```
+
+{wip}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
