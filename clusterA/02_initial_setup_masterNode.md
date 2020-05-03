@@ -106,11 +106,11 @@ sudo systemctl stop dnsmasq
 sudo nano /etc/dhcpcd.conf
 ```
 
-...adding the following at the bottom:
+...adding the following at the bottom in order to assign a static IP address to the master node:
 
 ```sh
 interface eth0
-static ip_address=192.168.5.1/24   # I'm sure these addresses are not being assigned by my router
+static ip_address=192.168.5.1/24 
 ```
 
 ```sudo service dhcpcd restart```
