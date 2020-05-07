@@ -82,6 +82,13 @@ sudo apt install python3-pip
 sudo pip3 install fabric
 ```
 
+and I'll install screen in case needed
+
+```sh
+sudo apt-get install screen
+```
+
+
 Basic set-up of the master node is now complete.
 
 ----
