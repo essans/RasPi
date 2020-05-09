@@ -79,6 +79,7 @@ Testing first using the following which should flash the green LED across each n
 ```sh
 ./cluster_config.py -c 'sudo apt-get -y update'
 ```
+<br>
 
 ```sh
 ./cluster_config.py -c 'sudo apt-get -y upgrade'
@@ -92,7 +93,7 @@ and then reboot:
 
 (2) Check and update localization for each worker node:
 
-```./cluster_config.py -c ‘timedatectl'``
+```./cluster_config.py -c ‘timedatectl'```
 
 Raspberry Pi boards usually ship with the UK localization so we’ll need to update if we’re (say) based in New York and the master is configured as such.  The following will list available timezones:
 
