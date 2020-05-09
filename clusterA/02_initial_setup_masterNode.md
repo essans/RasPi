@@ -183,6 +183,14 @@ now reboot the pi:
 sudo shutdown -r
 ```
 
+To list rules in iptables:
+
+```
+sudo iptables -t nat -L
+```
+
+
+
 ---
 <br>
 
