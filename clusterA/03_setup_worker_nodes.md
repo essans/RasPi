@@ -71,7 +71,8 @@ optional arguments:
 Testing first using the following which should flash the green LED across each node:
 
 ```sh
-./cluster_config.py -c 'sudo sh -c "echo 1 >/sys/class/leds/led0/brightness"' -m Y```
+./cluster_config.py -c 'sudo sh -c "echo 1 >/sys/class/leds/led0/brightness"' -m Y
+```
 
 (2) Once confirmed okay, then run an update and upgrade across all worker nodes:
 
@@ -85,7 +86,7 @@ Testing first using the following which should flash the green LED across each n
 
 and then reboot:
 
-``sh
+```sh
 ./cluster_config.py -c 'sudo shutdown -r now’
 ```
 
