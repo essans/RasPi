@@ -126,6 +126,36 @@ Save and exit, and then
 
 <br>
 
+(3) I want to control the assignment of IP address to the the worker nodes that will live on the sub-network and access this raspberry pi for internet access.  To do that I need to configure the ```dnsmasq.conf``` file:
+
+```sh
+sudo nano /etc/dnsmasq.conf
+```
+
+After making sure that EVERY line is commented out (most usually but there might be two at the bottom) add the following lines:
+
+```sh
+interface=eth0 #internet service to the nodes via ethernet 
+dhcp-range=192.168.5.2,192.168.5.64,255.255.255.0,24h #range of IP addresses
+```
+
+```sh
+sudo systemctl start dnsmasq  #start the service
+```
+
+(4) Enable IP forwarding in this file: 
+
+```sudo nano /etc/sysctl.conf``` 
+
+by uncommenting this line:
+
+```sh
+net.ipv4.ip_forward=1
+```
+
+(5) Now I need to update ```iptables``` to configure the ip packet filter rules in allow all worker nodes to essentially use the IP address of the master node when connecting to the internet.  This is known as masquerading and the firewall keeps track of the incoming and outgoing connections (ie how to directly traffic to/from the right node) using Network Address Translation.  Essentially by keeping tracking of ports and MAC addresses. 
+
+
 {wip}
 
 
