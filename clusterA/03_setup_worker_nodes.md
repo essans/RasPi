@@ -16,7 +16,9 @@ On the master node find out the network range for the ethernet network just esta
 
 We are going to scan that range using CIDR notation.  For example ```192.168.5.0/24``` scans the 256 IP addresses from ```192.168.5.0``` to ```192.168.5.255```.  And, ```192.168.5.0/16``` would scan all 65,534 IP addresses from ```192.168.0.0``` to ```192.168.255.255```.  The first scan would take a few seconds while the latter would take 30-60minutes.
 
-```sudo nmap -sn 192.168.5.0/24```
+```
+sudo nmap -sn 192.168.5.0/24
+```
 
 This will return a list of IP addresses active on our isolated network.
 
