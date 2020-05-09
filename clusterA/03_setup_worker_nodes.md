@@ -94,25 +94,34 @@ and then reboot:
 (2) Check and update localization for each worker node:
 
 ```
-./cluster_config.py -c ‘timedatectl'```
+./cluster_config.py -c ‘timedatectl'
+```
 
 Raspberry Pi boards usually ship with the UK localization so we’ll need to update if we’re (say) based in New York and the master is configured as such.  The following will list available timezones:
 
 ```timedatectl list-timezones```
 
-```./cluster_config -c 'sudo timedatectl set-timezone America/New_York'```
+```
+./cluster_config -c 'sudo timedatectl set-timezone America/New_York'
+```
 
 and then check that the updates were made:
 
-```./cluster_config.py -c ‘timedatectl'```
+```
+./cluster_config.py -c ‘timedatectl'
+```
 
 (3) Check and update locale settings:
 
-```./cluster_config.py -c ‘locale'```
+```
+./cluster_config.py -c ‘locale'
+```
 
 If update is needed, first check that the locale is available:
 
-```./cluster_config.py -c ‘locale -a'```
+```
+./cluster_config.py -c ‘locale -a'
+```
 
 If not then generate as needed.  In this case for en_US first uncomment it in the locale.gen file if necessary.
 
@@ -124,18 +133,24 @@ If not then generate as needed.  In this case for en_US first uncomment it in th
 #sed -i '/<pattern>/s/^/# /g' file
 ```
 
-```./cluster_config.py -c 'sudo locale-gen'```
+```
+./cluster_config.py -c 'sudo locale-gen'
+```
 
-```./cluster_config.py -c 'sudo update-locale LANG=en_US.UTF-8'```
+```
+./cluster_config.py -c 'sudo update-locale LANG=en_US.UTF-8'
+```
 
 and then check/confirm:
 
-```./cluster_config.py -c 'locale'```
+```
+./cluster_config.py -c 'locale'
+```
 
 (4) Change passwords:
-```.cluster_config.py -c 'echo -e "raspberry\nNewPassword\nNewPassword" | passwd'```
+```sh
+.cluster_config.py -c 'echo -e "raspberry\nNewPassword\nNewPassword" | passwd'
+```
 
 Now, update the new passwords in the ```cluster_config.py``` script.
-
-
 
