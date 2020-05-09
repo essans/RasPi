@@ -155,6 +155,36 @@ net.ipv4.ip_forward=1
 
 (5) Now I need to update ```iptables``` to configure the ip packet filter rules in allow all worker nodes to essentially use the IP address of the master node when connecting to the internet.  This is known as masquerading and the firewall keeps track of the incoming and outgoing connections (ie how to directly traffic to/from the right node) using Network Address Translation.  Essentially by keeping tracking of ports and MAC addresses. 
 
+```sh
+sudo iptables -t nat -A  POSTROUTING -o wlan0 -j MASQUERADE
+```
+
+and then save the rules so they are not lost upon reboot:
+
+```sh
+sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+```
+
+Then edit this file so that rules are installed upon boot:
+
+```sh
+sudo nano /etc/rc.local
+```
+
+and add the following line just above the "exit 0":
+
+```sh
+iptables-restore < /etc/iptables.ipv4.nat
+```
+
+now reboot the pi:
+
+```sh
+sudo shutdown -r
+```
+
+The following diagram illustrates how this masquerading and network address translation will work once the worker nodes are set-up:
+
 
 {wip}
 
