@@ -183,12 +183,40 @@ now reboot the pi:
 sudo shutdown -r
 ```
 
+---
+<br>
+
 The following diagram illustrates how this masquerading and network address translation will work once the worker nodes are set-up:
 
 ![](https://github.com/essans/RasPi/blob/master/images/raspi_cluster_nat.png)
 
+The way it works is as follows:
 
-{wip}
+(1) When the worker nodes 1-5 come on line they will request an IP address the [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol#Discovery) server running on the master node.  Either a new one, or the previously assigned one if available.  At this point the IP address for each note is mapped to its corresponding MAC address.
+
+(2) If node 2 seeks to connect to the internet (eg via a ping request sent via TCP on port 22) then that will travel to the master node.  The master node using the DNS Masquerading will mask node2's IP address with it's own which will then travel to the router before itself betting masked with the router's public IP address.
+
+At each step of the way mappings and tables are maintained so that when a response is received from the internet it knows how to find its way back to node2 which sits in an isolated part of the network.
+
+![](https://github.com/essans/RasPi/blob/master/images/raspi_cluster_node2_ping.png)
+
+Node 2 can communicate outside of the cluster but nothing outside the isolated network can communicate in.
+
+To see this in action I can use ```tcpdump```
+
+```sh
+sudo apt-get install tcpdump
+```
+
+```sh
+sudo tcpdump -i eth0 -en
+```
+---
+<br>
+
+The master node is now ready.  It might make sense to [back-up](https://medium.com/@ccarnino/backup-raspberry-pi-sd-card-on-macos-the-2019-simple-way-to-clone-1517af972ca5).
+
+[Next](): Configure each node.
 
 
 
