@@ -185,7 +185,7 @@ sudo shutdown -r
 
 The following diagram illustrates how this masquerading and network address translation will work once the worker nodes are set-up:
 
-[]!(https://github.com/essans/RasPi/blob/master/images/raspi_cluster_nat.png)
+![](https://github.com/essans/RasPi/blob/master/images/raspi_cluster_nat.png)
 
 
 {wip}
