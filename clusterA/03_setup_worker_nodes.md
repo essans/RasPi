@@ -22,6 +22,8 @@ sudo nmap -sn 192.168.5.0/24
 
 This will return a list of IP addresses active on our isolated network.
 
+<br>
+
 (2) Not necessary (indeed it would be impractical at scale and for remote servers) we can from the master-node, ssh into each pi and execute the following to "flash" the green LED:
 
 ```sh
@@ -52,6 +54,8 @@ I need to upate/upgrade the OS on each node and make initial configuration chang
 
 (c) The approach I take is via the ```fabric``` python package which allows programatic scheduling and running of shell commands over ssh.  I can write some code that stores the IP addresses, user names, passwords etc for each node; loop across each of these node while passing the desired command lines we want to run. 
 
+<br>
+
 (1) On master-node create the ```~/code/python``` folder, then create a ```cluster_config.py``` file and copy/paste code from [here](https://github.com/essans/RasPi/blob/master/cluster/configure_cluster.py).  Run a ```chmod u+x``` and then:
 
 ```sh
@@ -75,6 +79,8 @@ Testing first using the following which should flash the green LED across each n
 ```sh
 ./cluster_config.py -c 'sudo sh -c "echo 1 >/sys/class/leds/led0/brightness"' -m Y
 ```
+
+<br>
 
 (2) Once confirmed okay, then run an update and upgrade across all worker nodes:
 
@@ -113,6 +119,8 @@ and then check that the updates were made:
 ./cluster_config.py -c ‘timedatectl'
 ```
 
+<br>
+
 (3) Check and update locale settings:
 
 ```
@@ -149,6 +157,8 @@ and then check/confirm:
 ./cluster_config.py -c 'locale'
 ```
 
+<br>
+
 (4) Change passwords:
 ```sh
 .cluster_config.py -c 'echo -e "raspberry\nNewPassword\nNewPassword" | passwd'
@@ -156,3 +166,10 @@ and then check/confirm:
 
 Now, update the new passwords in the ```cluster_config.py``` script.
 
+<br>
+
+(5) Change the ```hostname``` for each pi from ```raspberrypi``` default to ```node-1``` etc.  In order to do that in 1-shot I need a modified version of the ```cluster_config.py``` script.
+
+<wip>
+  
+  
