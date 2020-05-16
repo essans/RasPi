@@ -27,7 +27,7 @@ Raspberry pi set-up
 -------------------
 It doesn't have to be a raspberry pi, but I've used one here.
 
-(1) Check to see that ``git`` is installed with ``git --version``.  Installed if need be:
+Check to see that ``git`` is installed with ``git --version``.  Installed if need be:
 
 .. code-block:: bash
 
@@ -61,7 +61,7 @@ I made some changes along the way, but it was a good place to start.  Lots of tr
 
 ``recommonmark`` enables the use of .md pages along with the .rst pages that are more commonly used.
 
-(3) In my home directory I keep all the github material in its own subdirectory created with ``mkdir github``.  Now I retrieve the information from github.com repo:
+In my home directory I keep all the github material in its own subdirectory created with ``mkdir github``.  Now I retrieve the information from github.com repo:
 
 .. code-block:: bash
 
@@ -69,7 +69,7 @@ I made some changes along the way, but it was a good place to start.  Lots of tr
    git clone https://github.com/essans/RasPi
 
 
-(4) Set some configurations:
+Set some configurations:
 
 .. code-block:: bash
 
