@@ -1,6 +1,6 @@
 Introduction
 ============
-The ambition behind this project is to use the relatively inexpensive Raspberry Pi Single Board Computer (SCB) as the basis for reinforcing my understanding of topcis relating to computer architechure, networking, security, physical computing, programming, and other things I'll stumble upon and learn along the way.
+The ambition behind this project is to use the relatively inexpensive Raspberry Pi Single Board Computer (SCB) as the basis for reinforcing my understanding of vaarious topics relating to computer architechure, networking, security, physical computing, programming, and other things I'll stumble upon and hopefully learn along the way.
 
 Why the raspberry-pi ?
 
