@@ -1,10 +1,11 @@
-Creation of these docs
-======================
-In creating a set of recipes for use on the raspberry-pi my goal was to document things along the way which for me is a long established habit for whenever setting up a new computer, noting down a new piece of code, or script for future use, or a technique for solving a problem. 
+Creation of this documentation
+==============================
+
+In creating a set of recipes for use on the raspberry-pi my goal is to document things along the way.   Something which I already do: Setting up a new computer, noting down a new piece of code, or script for future use, or a technique for solving a problem. 
 
 I am a voracious note taker, whether it is handwritten in a notebook (I'm a big fan of the `Barron Fig <http://www.barronfig.com/>`_ Vanguard softcover notebooks - always dot grid), and I use a combination of Evernote and private github repositories.
 
-For my raspberry-pi projects I want to experiment with documenting things on the web.  I started with a collection of markdown and code pages in a public github repository but it wasn't very organized.  
+For my raspberry-pi projects I want to experiment with documenting things on the web.  I started with a collection of markdown and code pages in a public github repository but it's difficult to keep organized and make available in a form that is usable for the purpose in mind.  
 
 I've always likeed the "read the docs" theme for technical documentation and my thinking is that maybe it will work for documenting what I now call a collection of recipes for the raspberry-pi.  
 
@@ -19,20 +20,21 @@ Prerequisites
 
 Github Repository
 -----------------
-The github repostory can either have existing code and other documents, or can be a freshly created one.  We are going to create a separate docs folder later.
+The github repository can either have existing code/documents, or can be a freshly created one.  We are going to create a separate docs folder later.
 
 
 Raspberry pi set-up
 -------------------
 It doesn't have to be a raspberry pi, but I've used one here.
 
-(1) Check to see it ``git`` is installed with ``git --version``.  If can be installed with:
+(1) Check to see that ``git`` is installed with ``git --version``.  If can be installed with:
 
 .. code-block:: bash
    :linenos:
 
    sudo apt-get update
    sudo apt-get install git
+
 
 Now configure:
 
@@ -41,6 +43,7 @@ Now configure:
 
    git config --global user.email "address@domain.com"    
    git config --global user.name "First Last"
+
 
 (2) Install a couple of packages needed to build the docs:
 
