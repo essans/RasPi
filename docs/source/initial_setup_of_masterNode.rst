@@ -9,7 +9,7 @@ etc
 
 etc
 
-.. code-block:: console
+.. code-block:: bash
 
   sudo apt-get update
   sudo apt-get upgrade
