@@ -9,8 +9,9 @@ etc
 
 etc
 
+.. code-block:: bash
 
-``code block``
-
+  sudo apt-get update
+  sudo apt-get upgrade
 
 

@@ -3,18 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Raspberry Pi Cluster documentation!
-================================================
+Welcome to the documentation for a collection of recipes for the Raspberry Pi
+=============================================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    intro
-   overview
-   initial_setup_of_masterNode
-   setup_worker_nodes
-
+   recipes
+   readthedocs
 
 
 Indices and tables
