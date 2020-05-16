@@ -27,7 +27,7 @@ Raspberry pi set-up
 -------------------
 It doesn't have to be a raspberry pi, but I've used one here.
 
-(1) Check to see that ``git`` is installed with ``git --version``.  If can be installed with:
+(1) Check to see that ``git`` is installed with ``git --version``.  It can be installed with:
 
 .. code-block:: bash
    :linenos:
@@ -54,7 +54,10 @@ Now configure:
    sudo pip3 install sphinx-rtd-theme
    sudo pip3 install recommonmark
 
-``sphinx`` is a documentation generator on which I did some research on the web.   I also used this getting started guide `here <https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html>_`.  I use this in the following with a few minor changes.
+``sphinx`` is a documentation generator that I've seen used in many places.   This is a good "getting started" guide that I used:
+   -  `<https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html>`_.  
+   
+But I made some changes along the way.  Lots of trial and error. 
 
 ``sphinx-rtd-theme`` is the theme i want.  There are others.
 
