@@ -11,7 +11,7 @@ etc
 
 .. code-block:: console
 
-  command1
-  command2
+  sudo apt-get update
+  sudo apt-get upgrade
 
 
