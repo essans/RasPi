@@ -9,8 +9,9 @@ etc
 
 etc
 
+.. code-block:: console
 
-``code block``
-
+  command1
+  command2
 
 
