@@ -30,7 +30,6 @@ It doesn't have to be a raspberry pi, but I've used one here.
 (1) Check to see that ``git`` is installed with ``git --version``.  It can be installed with:
 
 .. code-block:: bash
-   :linenos:
 
    sudo apt-get update
    sudo apt-get install git
@@ -39,7 +38,6 @@ It doesn't have to be a raspberry pi, but I've used one here.
 Now configure:
 
 .. code-block:: bash
-   :linenos:
 
    git config --global user.email "address@domain.com"    
    git config --global user.name "First Last"
@@ -48,7 +46,6 @@ Now configure:
 (2) Install a couple of packages needed to build the docs:
 
 .. code-block:: bash
-   :linenos:
 
    sudo pip3 install sphinx
    sudo pip3 install sphinx-rtd-theme
@@ -66,7 +63,6 @@ But I made some changes along the way.  Lots of trial and error.
 (3) In my home directory I keep all the github material in its own subdirectory created with ``mkdir github``.  Now I retrieve the information from github.com repo:
 
 .. code-block:: bash
-   :linenos:
 
    cd github
    git clone https://github.com/essans/RasPi
@@ -75,7 +71,6 @@ But I made some changes along the way.  Lots of trial and error.
 (4) Set some configurations:
 
 .. code-block:: bash
-   :linenos:
 
    cd RasPi
    
@@ -101,7 +96,6 @@ Once I've filled in the details asked for (which I  can change later) i udpdate 
 (6) Once the ``index.rst`` and other pages are ready in the ``/docs/source`` folder i then ``cd ..`` up one level and build the documentation by running:
 
 .. code-block:: bash
-   :linenos:
 
    make clean
    make html
@@ -112,7 +106,6 @@ There are usually some formatting errors that are flagged and will need to be fi
 (7) Commit and push back to github.com
 
 .. code-block:: bash
-   :linenos:
 
    git add --all
    git commit -m "an initial commit"
