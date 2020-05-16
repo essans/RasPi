@@ -27,7 +27,7 @@ Raspberry pi set-up
 -------------------
 It doesn't have to be a raspberry pi, but I've used one here.
 
-(1) Check to see that ``git`` is installed with ``git --version``.  It can be installed with:
+(1) Check to see that ``git`` is installed with ``git --version``.  Installed if need be:
 
 .. code-block:: bash
 
@@ -43,7 +43,7 @@ Now configure:
    git config --global user.name "First Last"
 
 
-(2) Install a couple of packages needed to build the docs:
+and Install a couple of packages needed to build the docs:
 
 .. code-block:: bash
 
@@ -52,9 +52,10 @@ Now configure:
    sudo pip3 install recommonmark
 
 ``sphinx`` is a documentation generator that I've seen used in many places.   This is a good "getting started" guide that I used:
+
    -  `<https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html>`_.  
    
-But I made some changes along the way.  Lots of trial and error. 
+I made some changes along the way, but it was a good place to start.  Lots of trial and error. 
 
 ``sphinx-rtd-theme`` is the theme i want.  There are others.
 
@@ -80,9 +81,12 @@ But I made some changes along the way.  Lots of trial and error.
    sphinx-quickstart
 
 
-Once I've filled in the details asked for (which I  can change later) i udpdate the ``conf.py`` file just auto-created.  Most recent conf.py file can be found in the github repo in the ``docs/source`` folder.
+Once I've filled in the details asked for (which I  can change later) i udpdate the ``conf.py`` file which the ``sphinx-quickstart`` auto-created.  My most recent conf.py file can be found in the github repo in the ``docs/source`` folder.
 
-(5) Begin creating documentation.
+
+Begin creating documentation
+----------------------------
+
 * The "main" file is the ``index.rst`` file found in the ``docs/source`` folder.  It contains text for the start of the docs and lists the other pages in the sequence in which they will be rendered.
 
 * The ``.rst`` extension indicates "Restructured Text (ReST) formatting which is similar to markdown .md mark-up.
@@ -93,7 +97,11 @@ Once I've filled in the details asked for (which I  can change later) i udpdate 
   - https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#introduction
   - https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 
-(6) Once the ``index.rst`` and other pages are ready in the ``/docs/source`` folder i then ``cd ..`` up one level and build the documentation by running:
+
+Build Docs and push back to github
+----------------------------------
+
+Once the ``index.rst`` and other pages are ready in the ``/docs/source`` folder i then ``cd ..`` up one level and build the documentation by running:
 
 .. code-block:: bash
 
@@ -103,7 +111,7 @@ Once I've filled in the details asked for (which I  can change later) i udpdate 
 There are usually some formatting errors that are flagged and will need to be fixed before running the above and only then proceed to...
 
 
-(7) Commit and push back to github.com
+Commit and push back to github.com with:
 
 .. code-block:: bash
 
@@ -112,4 +120,6 @@ There are usually some formatting errors that are flagged and will need to be fi
    git push -u origin master
 
 
-(8) Navigate to www.readthedocs.org, login, and go to your projects `dashboard <https://readthedocs.org/dashboard/>`_ and then click on "import a project" button.  Select the repo that should be listed.
+Import to ReadTheDocs
+---------------------
+Make any refinements to the docs via github editing and then when ready navigate to www.readthedocs.org, login, and go to your projects `dashboard <https://readthedocs.org/dashboard/>`_ and then click on "import a project" button.  Select the repo that should be listed.
