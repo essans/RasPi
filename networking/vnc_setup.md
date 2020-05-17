@@ -7,16 +7,19 @@ In the same way that SSH allows access to the command line of the raspberry pi, 
 
 2) Set a password via:
 
+```
     sudo vncpasswd -service
     
     #should return "Successfully set password VNC parameter in /root/.vnc/config.d/vncserver-x11"
+```
 
 3) Create the following file with a single line:
 
+```
     sudo nano /etc/vnc/config.d/common.custom
     
     Authentication=VncAuth
-
+```
 
 And then restart the vnc service:
 
