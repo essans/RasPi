@@ -13,6 +13,8 @@ For the past few months I've had a Raspberry Pi 4 (raspi-4a) connected to my hom
 There are also other Raspberry Pi boards that connect to the same router via wifi.  There are also computers, phones, iPads and other wireless devices that connect to the same wifi router.  While every device has its own MAC address and operates on an assigned channel there is still a chance of conflicts, latency, and other non-optimal behavior when not using a router not designed to handle that capacity.
 
 .. image:: images/raspi4a_accesspoint.png
+    :align: center
+    :alt: raspi4a_as_accesspoint
 
 
 Objective
