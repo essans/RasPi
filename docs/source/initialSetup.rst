@@ -8,7 +8,7 @@ Unless purchased in a "product bundle" raspberry-pi arrive as a single-board-com
    
 * Power supply (see `here <https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md>`_ )
 
-Note that akeyboard, mouse, HDMI cable, monitor are not listed here as the the raspberry Pi machines will mostly be operated "headless" which means access will be remote using Secure Shell (SSH) protocol or Virtual Network Computing (VNC).
+Note that keyboard, mouse, HDMI cable, monitor are not listed here as the the raspberry Pi machines will mostly be operated "headless" which means access will be remote using Secure Shell (SSH) protocol or Virtual Network Computing (VNC).
 
 -----
 
