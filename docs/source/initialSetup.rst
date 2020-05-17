@@ -61,7 +61,7 @@ Save the file and exit. Unmount and eject the SD card and insert into the Raspbe
 Additional OS configurations
 ----------------------------
 
-5) First we need to access and login to the raspi over wifi:
+1) First we need to access and login to the raspi over wifi:
 
    * Login into the router portal via (eg) ``http://192.168.1.1`` in order to find determine which the IP address the router has assigned to the new device that is now connected to the network. Could also use a network scanner via the mac. Then ssh into the pi:
    
@@ -85,14 +85,14 @@ Update the OS and other programs
     sudo apt-get update
     sudo apt-get upgrade
     
-6) Likely not needed any more but to be on the safe side expand the file-system to take advantage of the SD-card capacity:
+2) Likely not needed any more but to be on the safe side expand the file-system to take advantage of the SD-card capacity:
 
 .. code-block:: bash
 
     sudo raspi-config --expand-rootfs
     
     
-7) Update various configurations via command line via ``sudo raspi-config``:
+3) Update various configurations via command line via ``sudo raspi-config``:
 
    * password
    
@@ -113,7 +113,7 @@ If the light version of the OS is installed or the raspi is *only* ever going to
 and add the following line at the bottom: ``gpu_mem=16``
 
 
-8) Install any linux command-line utilities and programs as needed.  eg to install ``screen``, basic calculator ``bc`` etc.
+4) Install any linux command-line utilities and programs as needed.  eg to install ``screen``, basic calculator ``bc`` etc.
 
 .. code-block:: bash
 
@@ -168,7 +168,42 @@ From a safari browser the navigate to ``vnc://192.168.1.184`` and enter password
 
 -----
 
+SSH key and public key
+----------------------
 
+Access to the raspberry pi via SSH from within your network is usually safe, but if access is desired from outside the local network (ie internet) then a mere username + password combination may be vulnerable.
 
+Security can be enhanced with the use of SSH key and public key for authentication.  More information on the SSH protocal, keys etc can be found `here. <https://www.ssh.com/ssh/>`_
 
+1) In the home ``~``directory of the mac client machine generate the key, set a passphrase for the private key, and copy the public key to the pi
+
+.. code-block:: bash
+
+   ssh-keygen
+   
+   ssh-copy-id pi@192.168.1.184
+   
+If the private key is likly to be one of many then rename it.  Delete the public key or achive it somewhere. 
+
+.. code-block:: bash
+
+   mv id_rsa raspi4a
+   
+   rm id_rsa.pub
+   
+You may need to ``chmod 600 raspi4a``  for correct permissioning.
+ 
+2) On the raspberry-pi server update various configuration by opening:
+
+.. code-block:: bash
+
+   sudo nano /etc/ssh/sshd_config
+   
+Uncomment/enable ``PubkeyAuthentication yes``.  Set the ``Port`` number to match port-forwarding on the router, and make sure enable ``PasswordAuthentication no``.
+
+3) Log-in to the network router/switch and enable port-fowarding with the port number (avoid the common Port 22...) mapped to the raspberry pi.
+
+4) Restart the service with ``sudo service ssh restart``
+
+5) Confirm that the selected port is listerning: ``netstat -tnl``
 
