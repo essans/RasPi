@@ -8,7 +8,6 @@ Welcome to the documentation for a collection of recipes for the Raspberry Pi
 
 .. toctree::
    :maxdepth: 3
-   :caption: Contents:
 
    intro
    readthedocs
