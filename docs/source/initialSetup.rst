@@ -1,6 +1,6 @@
-**************************
+==========================
 Raspberry Pi initial setup
-**************************
+==========================
 
 
 Unless purchased in a "product bundle" raspberry-pi arrive as a single-board-computer.  Nothing else.  Each board requires:
@@ -12,7 +12,7 @@ Notice keyboard, mouse, monitor (and HDMI cable) are not listed here as the the 
 -----
 
 Flash Operating System to SD-card
-=================================
+---------------------------------
 
 Most of the time the "Rasbian" operating system which is based on the debian linux distribution and provided by the Raspberry Pi Foundation works fine.
 
@@ -58,7 +58,7 @@ Save the file and exit. Unmount and eject the SD card and insert into the Raspbe
 
 
 Additional OS configurations
-============================
+----------------------------
 
 5) First we need to access and login to the raspi over wifi:
 
@@ -92,11 +92,15 @@ Update the OS and other programs
     
     
 7) Update various configurations via command line via ``sudo raspi-config``:
-  * password
-  * set the locale
-  * update timezone
-  * set a hostname (eg rasp-4a)
-  * enable vnc
+   * password
+   
+   * set the locale
+   
+   * update timezone
+   
+   * set a hostname (eg rasp-4a)
+   
+   * enable vnc
 
 
 8) Install any linux command-line utilities and programs as needed.  eg to install ``screen``
@@ -107,7 +111,7 @@ Update the OS and other programs
     
 
 Enable VNC access
-=================
+-----------------
 
 In the same way that SSH (Secure Shell) allows access to the command line of the raspberry pi,  VNC (Virtual Networking Computing) allows access to the GUI of the raspberry pi if/when needed.   
 
