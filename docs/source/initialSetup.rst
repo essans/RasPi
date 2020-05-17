@@ -60,11 +60,20 @@ Save the file and exit. Unmount and eject the SD card and insert into the Raspbe
 Additional OS configurations
 ============================
 
-5) Login into the router portal via (eg) ``http://192.168.1.1`` in order to find determine which the IP address the router has assigned to the new device that is now connected to the network. Could also use a network scanner via the mac. Then ssh into the pi:
+5) First we need to access and login to the raspi over wifi:
 
-.. code-block:: bash
+    (i) Login into the router portal via (eg) ``http://192.168.1.1`` in order to find determine which the IP address the router has assigned to the new device that is now connected to the network. Could also use a network scanner via the mac. Then ssh into the pi:
 
-    ssh pi@192.168.1.168
+      .. code-block:: bash
+
+          ssh pi@192.168.1.168
+    
+    (ii) If the raspberry pi is the only one on the network (or at least the only one that is still has the default hostname ``raspberrypi`` then you can access more generically with:
+ 
+    
+      .. code-block:: bash
+
+          ssh pi@raspberrypi.local
     
 Update the OS and other programs
 
