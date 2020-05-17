@@ -17,3 +17,17 @@ Not to mention that the cost of error is low.  Worse case I'll fry a single-boar
 Tinkering with a with a computer, installing new operating systems, software, or even a driver, can ruin an existing set-up resulting in the next 8-hours trying to roll-everythig back and hopefully fixing the problem.  I think we've all been there...
 
 The raspberry-pi is cheap.  It is also fun to tinker with :)
+
+
+Collection of Recipes
+=====================
+
+I try not to do things randomly.  
+
+Especially as I hope to reuse what I learn and apply it somewhere else.  
+
+I want to document the objectives, sequence of necessary steps, and the outcome in a way that is memorialized for future reference.  
+
+I want everything to be replicable.
+
+Recipes.  This, I think is a good analogy for what I want this documentation to achieve.
