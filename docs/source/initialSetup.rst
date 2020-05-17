@@ -102,6 +102,14 @@ Update the OS and other programs
    * set a hostname (eg rasp-4a)
    
    * enable vnc
+   
+If the light version of the OS is installed or the raspi is *only* ever going to be used via the command-line as a headless device then the gpu memory allocation can be reduced to the 16mb minimum.  Set via ``advanced options`` in ``raspi-config``, or directly in the boot config file:
+
+.. code-block:: bash
+
+   sudo nano /boot/config.txt
+   
+and add the following line at the bottom: ``gpu_mem=16``
 
 
 8) Install any linux command-line utilities and programs as needed.  eg to install ``screen``
