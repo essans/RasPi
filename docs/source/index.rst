@@ -11,5 +11,6 @@ a collection of recipes for the Raspberry Pi
    :hidden:
 
    intro
+   initialSetup
    readthedocs
 
