@@ -75,11 +75,14 @@ Begin creating documentation
 ----------------------------
 
 * The "main" file is the ``index.rst`` file found in the ``docs/source`` folder.  It contains text for the start of the docs and lists the other pages in the sequence in which they will be rendered.
-|
+
+
 * The ``.rst`` extension indicates "Restructured Text (ReST) formatting which is similar to markdown .md mark-up.
-|
+
+
 * At first glance they both ``.md`` markup and ReST look similar in objectives but with different syntax but it seems that .md is see as a light-weight with ``.rst`` being favoured for use in technical documentation.  Some discussion on this can be found `here. <https://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/>`_ 
-|
+
+
 * I've found a few reference for looking up ``.rst`` syntax including: 
 
   - https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#introduction
