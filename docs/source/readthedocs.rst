@@ -11,6 +11,7 @@ Prerequisites
 
 The "read the docs" theme for online documentation is used across the web for `technical documentation <https://bloomberg.github.io/blpapi-docs/python/3.13/blpapi-package.html>`_ and for `lighter weight topics <http://cozmosdk.anki.com/docs/index.html>`_. 
 
+--------
 
 Raspberry pi set-up
 -------------------
@@ -70,6 +71,7 @@ Set some configurations:
 
 Running ``sphinx-quickstart`` enables quick set-up of some preliminary information which can be changed later.  I then update the ``conf.py`` file which was auto-created during the quickstart.  The most recent conf.py file can be found in the github repo in the ``docs/source`` folder.
 
+--------
 
 Begin creating documentation
 ----------------------------
@@ -88,6 +90,7 @@ Begin creating documentation
   - https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#introduction
   - https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 
+--------
 
 Build docs and push back to github
 ----------------------------------
@@ -110,6 +113,7 @@ Commit and push back to github.com with:
    git commit -m "an initial commit"
    git push -u origin master
 
+--------
 
 Import to readthedocs.org
 -------------------------
