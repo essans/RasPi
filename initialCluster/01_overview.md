@@ -14,7 +14,7 @@ Operating system on master and worker nodes will be Raspbian/Debian flavour of l
 ---
 ### Schematic
 
-![cluster v1](https://github.com/essans/RasPi/docs/source/blob/master/images/raspi_cluster_diagram_v1.png)
+![cluster v1](https://github.com/essans/RasPi/blob/master/docs/source/images/raspi_cluster_diagram_v1.png)
 
 ---
 
