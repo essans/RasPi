@@ -1,7 +1,7 @@
 Creation of this documentation
 ==============================
 
-In creating a set of recipes for use on the raspberry-pi my goal is to document things along the way.   Something which I already do: Setting up a new computer, noting down a new piece of code, or script for future use, or a technique for solving a problem. 
+In creating a set of recipes that use the raspberry-pi I will document things along the way.   This is something I already do: Whether it is setting up a new computer, noting down a new piece of code, or script for future use, or a technique for solving a problem. 
 
 I am a voracious note taker, whether it is handwritten in a notebook (I'm a big fan of the `Barron Fig <http://www.barronfig.com/>`_ Vanguard softcover notebooks - always dot grid), and I use a combination of Evernote and private github repositories.
 
@@ -18,6 +18,7 @@ Prerequisites
 * github.com account and repository
 * readthedocs.org account created/linked using your github login.
 
+
 Github Repository
 -----------------
 The github repository can either have existing code/documents, or can be a freshly created one.  We are going to create a separate docs folder later.
@@ -27,7 +28,7 @@ Raspberry pi set-up
 -------------------
 It doesn't have to be a raspberry pi, but I've used one here.
 
-Check to see that ``git`` is installed with ``git --version``.  Installed if need be:
+First check to see that ``git`` is installed with ``git --version``.  Installed if need be:
 
 .. code-block:: bash
 
