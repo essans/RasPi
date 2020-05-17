@@ -1,6 +1,6 @@
 Creation of this documentation
 ==============================
-This section documents the documentation creation process. 
+This section documents the creation and maintenance of this "read the docs" repository.  
 
 
 Prerequisites
