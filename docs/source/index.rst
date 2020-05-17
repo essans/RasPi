@@ -13,10 +13,3 @@ Welcome to the documentation for a collection of recipes for the Raspberry Pi
    intro
    readthedocs
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
