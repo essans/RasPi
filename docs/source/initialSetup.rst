@@ -112,11 +112,15 @@ If the light version of the OS is installed or the raspi is *only* ever going to
 and add the following line at the bottom: ``gpu_mem=16``
 
 
-8) Install any linux command-line utilities and programs as needed.  eg to install ``screen``
+8) Install any linux command-line utilities and programs as needed.  eg to install ``screen``, basic calculator ``bc`` etc.
 
 .. code-block:: bash
 
     sudo apt-get install screen
+    sudo apt-get install bc
+    
+    
+    
     
 -----
 
