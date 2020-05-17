@@ -1,8 +1,6 @@
 Creation of this documentation
 ==============================
-The "read the docs" theme for online documentation is used across the web for `technical documentation <https://bloomberg.github.io/blpapi-docs/python/3.13/blpapi-package.html>`_ and for `lighter weight topics <http://cozmosdk.anki.com/docs/index.html>`_. 
-
-This section documents the documentation creation process.  A recipe in and of itself.
+This section documents the documentation creation process. 
 
 
 Prerequisites
@@ -11,10 +9,7 @@ Prerequisites
 * github.com account and repository
 * readthedocs.org account created/linked using your github login.
 
-
-Github Repository
------------------
-The github repository can either have existing code/documents, or can be a freshly created one.  
+The "read the docs" theme for online documentation is used across the web for `technical documentation <https://bloomberg.github.io/blpapi-docs/python/3.13/blpapi-package.html>`_ and for `lighter weight topics <http://cozmosdk.anki.com/docs/index.html>`_. 
 
 
 Raspberry pi set-up
@@ -91,7 +86,7 @@ Begin creating documentation
   - https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 
 
-Build Docs and push back to github
+Build docs and push back to github
 ----------------------------------
 
 Once the ``index.rst`` and other pages are ready in the ``/docs/source`` folder i then ``cd ..`` up one level and build the documentation by running:
@@ -118,3 +113,6 @@ Import to readthedocs.org
 Make any refinements to the docs via github editing and then when ready navigate to www.readthedocs.org, login, and go to the projects `dashboard <https://readthedocs.org/dashboard/>`_ and click on "import a project" button.  Select the repo that should be listed on the dashboard.  
 
 Once built the online docs are visible on https://raspi-recipes.readthedocs.io
+
+The docs do not need to be re-built everytime a change is made as the updates can be made directly in ``/docs/source/`` aread of the the github repo.
+
