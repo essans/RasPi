@@ -1,56 +1,42 @@
 ### Raspberry Pi VNC access
 
-```
-sudo raspi-config
+In the same way that SSH allows access to the command line of the raspberry pi,  VNC (Virtual Networking Computing) allows access to the GUI of the raspberry pi if/when needed.   
 
----> enable VNC
-```
+1) Enable VNC via ```sudo raspi-config``` if not already done.
 
-<br>
 
-```
-sudo vncpasswd -service 
+2) Set a password via:
 
-# Successfully set "Password" VNC parameter in /root/.vnc/config.d/vncserver-x11 
-```
+.. code-block:: bash
 
-```
-sudo nano /etc/vnc/config.d/common.custom
-```
+    sudo vncpasswd -service
+    
+    #should return "Successfully set password VNC parameter in /root/.vnc/config.d/vncserver-x11"
 
-add the following line:
-```
-Authentication=VncAuth
-```
+3) Create the following file with a single line:
+
+.. code-block:: bash
+
+    sudo nano /etc/vnc/config.d/common.custom
+    
+    Authentication=VncAuth
+
+
+And then restar the vnc service:
+
 
 ```
 sudo systemctl restart vncserver-x11-serviced
 ```
 
-To monitor logs:
+4) You may need to re-enable vnc via ```raspi-config``` and you may also need to install ```tightvncserver```. 
 
-```
-sudo journalctl -u vncserver-x11-serviced.service
-```
+-----
 
----
-
-When needing to access the desktop UI remotely we first need to ``` sudo raspi-config``` and set resolution to something that makes sense and also set ```boot to desktop```, and then reboot.
+When accessing the desktop UI remotely we first need to ``` sudo raspi-config``` and set resolution to something that makes sense depending on the client (usually the highest resolution for a mac) and also set ```boot to desktop```.
 
 From a safari browser the navigate to:
 
 ```
 vnc://192.168.1.184
 ```
-
-
-
-Following might be needed:
-
-```
-sudo apt-install tightvncserver
-```
-
-After done with VNC access we then need to change back the ```raspi-config``` settings.
-
-
