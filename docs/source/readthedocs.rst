@@ -58,7 +58,7 @@ and Install a couple of packages needed to build the docs:
    
 I made some changes along the way, but it was a good place to start.  Lots of trial and error. 
 
-``sphinx-rtd-theme`` is the theme i want.  There are others.  ``recommonmark`` enables the use of .md pages along with the .rst pages that are more commonly used.
+The ``sphinx-rtd-theme`` package is for the theme used for the documentation, and the ``recommonmark`` package enables the use of .md pages along with the .rst pages that are more commonly used.
 
 In my home directory I keep all the github material in its own subdirectory created with ``mkdir github``.  Now I retrieve the information from github.com repo:
 
