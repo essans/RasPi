@@ -124,4 +124,4 @@ Commit and push back to github.com with:
 
 Import to readthedocs.org
 -------------------------
-Make any refinements to the docs via github editing and then when ready navigate to www.readthedocs.org, login, and go to the projects `dashboard <https://readthedocs.org/dashboard/>`_ and click on "import a project" button.  Select the repo that should be listed on the dashboard.  Once built the online docs are visible on https://Raspi-recipes.readthedocs.io
+Make any refinements to the docs via github editing and then when ready navigate to www.readthedocs.org, login, and go to the projects `dashboard <https://readthedocs.org/dashboard/>`_ and click on "import a project" button.  Select the repo that should be listed on the dashboard.  Once built the online docs are visible on https://raspi-recipes.readthedocs.io
