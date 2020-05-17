@@ -62,18 +62,20 @@ Additional OS configurations
 
 5) First we need to access and login to the raspi over wifi:
 
-    (i) Login into the router portal via (eg) ``http://192.168.1.1`` in order to find determine which the IP address the router has assigned to the new device that is now connected to the network. Could also use a network scanner via the mac. Then ssh into the pi:
+   (i) Login into the router portal via (eg) ``http://192.168.1.1`` in order to find determine which the IP address the router has assigned to the new device that is now connected to the network. Could also use a network scanner via the mac. Then ssh into the pi:
+   
+   
+       .. code-block:: bash
+   
+           ssh pi@192.168.1.186
 
-      .. code-block:: bash
-
-          ssh pi@192.168.1.168
     
-    (ii) If the raspberry pi is the only one on the network (or at least the only one that is still has the default hostname ``raspberrypi`` then you can access more generically with:
+   (ii) If the raspberry pi is the only one on the network (or at least the only one that is still has the default hostname ``raspberrypi`` then you can access more generically with:
  
+        .. code-block:: bash
+   
+            ssh pi@raspberrypi.local
     
-      .. code-block:: bash
-
-          ssh pi@raspberrypi.local
     
 Update the OS and other programs
 
