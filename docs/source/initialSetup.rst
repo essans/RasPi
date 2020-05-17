@@ -128,11 +128,11 @@ Then restart the vnc service:
    sudo systemctl restart vncserver-x11-serviced
 
 
-4) You may need to re-enable vnc via ```raspi-config``` and you may also need to install and run ```tightvncserver```. 
+4) You may need to re-enable vnc via ``raspi-config`` and you may also need to install and run ``tightvncserver``. 
 
 -----
 
-When accessing the desktop UI remotely we first need to ``` sudo raspi-config``` and set resolution to something that makes sense depending on the client (usually the highest resolution for a mac) and also set ```boot to desktop```.
+When accessing the desktop UI remotely we first need to ``sudo raspi-config`` and set resolution to something that makes sense depending on the client (usually the highest resolution for a mac) and also set ``boot to desktop``.
 
 From a safari browser the navigate to ``vnc://192.168.1.184`` and enter password when prompted.
 
