@@ -22,5 +22,9 @@ Objective
 
 Reduce number of wifi devices connecting to the internet router by directing raspberry pi wireless traffic via the raspi-4a which is connected to the internet via ethernet. This raspi-4a device which acting as a wireless access point will broadcast its own SSID ("RAPI-NET").  The Raspi4a will still function normally as a raspberry pi while simultaneouly offering wireless access to any device with correct credentials. 
 
+.. image:: images/raspi4a_network.png
+    :align: center
+    :alt: network
+
 Access Point set-up
 ^^^^^^^^^^^^^^^^^^^
