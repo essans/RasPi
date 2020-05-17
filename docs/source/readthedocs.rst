@@ -95,6 +95,7 @@ Begin creating documentation
 * At first glance they both ``.md`` markup and ReST look similar in objectives but with different syntax but it seems that .md is see as a light-weight with ``.rst`` being favoured for use in technical documentation.  Some discussion on this can be found `here. <https://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/>`_ 
 
 * I've found a few reference for looking up ``.rst`` syntax including: 
+
   - https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#introduction
   - https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 
