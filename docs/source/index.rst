@@ -11,7 +11,6 @@ Welcome to the documentation for a collection of recipes for the Raspberry Pi
    :caption: Contents:
 
    intro
-   recipes
    readthedocs
 
 
