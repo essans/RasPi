@@ -63,7 +63,7 @@ Additional OS configurations
 
 5) First we need to access and login to the raspi over wifi:
 
-   (i) Login into the router portal via (eg) ``http://192.168.1.1`` in order to find determine which the IP address the router has assigned to the new device that is now connected to the network. Could also use a network scanner via the mac. Then ssh into the pi:
+   * Login into the router portal via (eg) ``http://192.168.1.1`` in order to find determine which the IP address the router has assigned to the new device that is now connected to the network. Could also use a network scanner via the mac. Then ssh into the pi:
    
    
        .. code-block:: bash
@@ -71,7 +71,7 @@ Additional OS configurations
            ssh pi@192.168.1.186
 
     
-   (ii) Alternatively, if the raspberry pi is the only one on the network (or at least the only one that is still has the default hostname ``raspberrypi`` then you can access more generically with:
+   * Alternatively, if the raspberry pi is the only one on the network (or at least the only one that is still has the default hostname ``raspberrypi`` then you can access more generically with:
  
         .. code-block:: bash
    
@@ -93,6 +93,7 @@ Update the OS and other programs
     
     
 7) Update various configurations via command line via ``sudo raspi-config``:
+
    * password
    
    * set the locale
@@ -119,8 +120,7 @@ and add the following line at the bottom: ``gpu_mem=16``
     sudo apt-get install screen
     sudo apt-get install bc
     
-    
-    
+       
     
 -----
 
