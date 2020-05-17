@@ -70,7 +70,7 @@ Additional OS configurations
            ssh pi@192.168.1.186
 
     
-   (ii) If the raspberry pi is the only one on the network (or at least the only one that is still has the default hostname ``raspberrypi`` then you can access more generically with:
+   (ii) Alternatively, if the raspberry pi is the only one on the network (or at least the only one that is still has the default hostname ``raspberrypi`` then you can access more generically with:
  
         .. code-block:: bash
    
