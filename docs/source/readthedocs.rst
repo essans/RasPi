@@ -21,7 +21,7 @@ Prerequisites
 
 Github Repository
 -----------------
-The github repository can either have existing code/documents, or can be a freshly created one.  We are going to create a separate docs folder later.
+The github repository can either have existing code/documents, or can be a freshly created one.  
 
 
 Raspberry pi set-up
@@ -58,9 +58,7 @@ and Install a couple of packages needed to build the docs:
    
 I made some changes along the way, but it was a good place to start.  Lots of trial and error. 
 
-``sphinx-rtd-theme`` is the theme i want.  There are others.
-
-``recommonmark`` enables the use of .md pages along with the .rst pages that are more commonly used.
+``sphinx-rtd-theme`` is the theme i want.  There are others.  ``recommonmark`` enables the use of .md pages along with the .rst pages that are more commonly used.
 
 In my home directory I keep all the github material in its own subdirectory created with ``mkdir github``.  Now I retrieve the information from github.com repo:
 
@@ -124,4 +122,6 @@ Commit and push back to github.com with:
 
 Import to readthedocs.org
 -------------------------
-Make any refinements to the docs via github editing and then when ready navigate to www.readthedocs.org, login, and go to the projects `dashboard <https://readthedocs.org/dashboard/>`_ and click on "import a project" button.  Select the repo that should be listed on the dashboard.  Once built the online docs are visible on https://raspi-recipes.readthedocs.io
+Make any refinements to the docs via github editing and then when ready navigate to www.readthedocs.org, login, and go to the projects `dashboard <https://readthedocs.org/dashboard/>`_ and click on "import a project" button.  Select the repo that should be listed on the dashboard.  
+
+Once built the online docs are visible on https://raspi-recipes.readthedocs.io
