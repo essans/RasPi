@@ -110,6 +110,8 @@ Update the OS and other programs
 
     sudo apt-get install screen
     
+-----
+
 
 Enable VNC access
 -----------------
@@ -151,6 +153,10 @@ Then restart the vnc service:
 When accessing the desktop UI remotely we first need to ``sudo raspi-config`` and set resolution to something that makes sense depending on the client (usually the highest resolution for a mac) and also set ``boot to desktop``.
 
 From a safari browser the navigate to ``vnc://192.168.1.184`` and enter password when prompted.
+
+-----
+
+
 
 
 
