@@ -127,7 +127,7 @@ The way it works is as follows:
 
 At each step of the way mappings and tables are maintained so that when a response is received from the internet it knows how to find its way back to node2 which sits in an isolated part of the network.
 
-![](github.com/essans/RasPi/blob/master/docs/source/images//raspi_cluster_node2_ping.png)
+![](github.com/essans/RasPi/blob/master/docs/source/images/raspi_cluster_node2_ping.png)
 
 Node 2 can communicate outside of the cluster but nothing outside the isolated network can communicate in.
 
