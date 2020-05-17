@@ -1,47 +1,167 @@
 
-<!DOCTYPE html>
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Creation of these docs &#8212; Raspberry Pi Cluster 0.0.1 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Creation of this documentation &mdash; RaspberryPi Recipes 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Collection of Recipes" href="recipes.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="recipes.html" title="Collection of Recipes"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Raspberry Pi Cluster 0.0.1 documentation</a> &#187;</li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Introduction" href="intro.html" /> 
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RaspberryPi Recipes
+          
+
+          
+          </a>
+
+          
             
-  <div class="section" id="creation-of-these-docs">
-<h1>Creation of these docs<a class="headerlink" href="#creation-of-these-docs" title="Permalink to this headline">¶</a></h1>
-<p>In creating a set of recipes for use on the raspberry-pi my goal was to document things along the way which for me is a long established habit for whenever setting up a new computer, noting down a new piece of code, or script for future use, or a technique for solving a problem.</p>
-<p>I am a voracious note taker, whether it is handwritten in a notebook (I’m a big fan of the <a class="reference external" href="http://www.barronfig.com/">Barron Fig</a> Vanguard softcover notebooks - always dot grid), and I use a combination of Evernote and private github repositories.</p>
-<p>For my raspberry-pi projects I want to experiment with documenting things on the web.  I started with a collection of markdown and code pages in a public github repository but it wasn’t very organized.</p>
-<p>I’ve always likeed the “read the docs” theme for technical documentation and my thinking is that maybe it will work for documenting what I now call a collection of recipes for the raspberry-pi.</p>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#collection-of-recipes">Collection of Recipes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Creation of this documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#github-repository">Github Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#raspberry-pi-set-up">Raspberry pi set-up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#begin-creating-documentation">Begin creating documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-docs-and-push-back-to-github">Build Docs and push back to github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-to-readthedocs-org">Import to readthedocs.org</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RaspberryPi Recipes</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Creation of this documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/readthedocs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creation-of-this-documentation">
+<h1>Creation of this documentation<a class="headerlink" href="#creation-of-this-documentation" title="Permalink to this headline">¶</a></h1>
+<p>In creating a set of recipes that for the raspberry-pi I will document things along the way.   This is something I already do for other things: Whether it is setting up a new computer, noting down a new piece of code, or script for future use, or a technique for solving a problem.</p>
+<p>I am a big note taker, whether it is handwritten in a notebook (I’m a big fan of the <a class="reference external" href="http://www.barronfig.com/">Barron Fig</a> Vanguard softcover notebooks - always dot grid), and I also use a combination of Evernote and private github repositories.</p>
+<p>For my raspberry-pi projects I want to experiment with documenting things on the web.  I started with a collection of markdown and code pages in a public github repository but it was difficult to keep things organized and make available in a form that is usable for the purpose in mind.</p>
+<p>The “read the docs” theme for online documentation is used across the web for <a class="reference external" href="https://bloomberg.github.io/blpapi-docs/python/3.13/blpapi-package.html">technical documentation</a> and for <a class="reference external" href="http://cozmosdk.anki.com/docs/index.html">lighter weight topics</a>.  My thinking is that maybe the same will work for documenting a collection of recipes for the raspberry-pi.</p>
 <p>This section documents how I’m going about doing this.  A recipe in and of itself.</p>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -53,152 +173,132 @@
 </div>
 <div class="section" id="github-repository">
 <h2>Github Repository<a class="headerlink" href="#github-repository" title="Permalink to this headline">¶</a></h2>
-<p>The github repostory can either have existing code and other documents, or can be a freshly created one.  We are going to create a separate docs folder later.</p>
+<p>The github repository can either have existing code/documents, or can be a freshly created one.  We are going to create a separate docs folder later.</p>
 </div>
 <div class="section" id="raspberry-pi-set-up">
 <h2>Raspberry pi set-up<a class="headerlink" href="#raspberry-pi-set-up" title="Permalink to this headline">¶</a></h2>
 <p>It doesn’t have to be a raspberry pi, but I’ve used one here.</p>
-<ol class="arabic simple">
-<li><p>Check to see it <code class="docutils literal notranslate"><span class="pre">git</span></code> is installed with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code>.  If can be installed with:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get update
+<p>First check to see that <code class="docutils literal notranslate"><span class="pre">git</span></code> is installed with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code>.  Installed if need be:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get update
 sudo apt-get install git
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Now configure:</p>
-<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>git config --global user.email <span class="s2">&quot;address@domain.com&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.email <span class="s2">&quot;address@domain.com&quot;</span>
 git config --global user.name <span class="s2">&quot;First Last&quot;</span>
 </pre></div>
-</td></tr></table></div>
-<ol class="arabic simple" start="2">
-<li><p>Install a couple of packages needed to build the docs:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo pip3 install sphinx
+</div>
+<p>and Install a couple of packages needed to build the docs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo pip3 install sphinx
 sudo pip3 install sphinx-rtd-theme
 sudo pip3 install recommonmark
 </pre></div>
-</td></tr></table></div>
-<p><code class="docutils literal notranslate"><span class="pre">sphinx</span></code> is a documentation generator on which I did some research on the web.   I also used this getting started guide <cite>here &lt;https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html&gt;_</cite>.  I use this in the following with a few minor changes.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sphinx</span></code> is a documentation generator that I’ve seen used in many places.   This is a good “getting started” guide that I used:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html">https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html</a>.</p></li>
+</ul>
+</div></blockquote>
+<p>I made some changes along the way, but it was a good place to start.  Lots of trial and error.</p>
 <p><code class="docutils literal notranslate"><span class="pre">sphinx-rtd-theme</span></code> is the theme i want.  There are others.</p>
 <p><code class="docutils literal notranslate"><span class="pre">recommonmark</span></code> enables the use of .md pages along with the .rst pages that are more commonly used.</p>
-<ol class="arabic simple" start="3">
-<li><p>In my home directory I keep all the github material in its own subdirectory created with <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">github</span></code>.  Now I retrieve the information from github.com repo:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> github
+<p>In my home directory I keep all the github material in its own subdirectory created with <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">github</span></code>.  Now I retrieve the information from github.com repo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> github
 git clone https://github.com/essans/RasPi
 </pre></div>
-</td></tr></table></div>
-<ol class="arabic simple" start="4">
-<li><p>Set some configurations:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> RasPi
+</div>
+<p>Set some configurations:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> RasPi
 
 mkdir docs
 <span class="nb">cd</span> docs
 
 sphinx-quickstart
 </pre></div>
-</td></tr></table></div>
-<p>Once I’ve filled in the details asked for (which I  can change later) i udpdate the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file just auto-created.  Most recent conf.py file can be found in the github repo in the <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> folder.</p>
-<p>(5) Begin creating documentation.
-* The “main” file is the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file found in the <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> folder.  It contains text for the start of the docs and lists the other pages in the sequence in which they will be rendered.</p>
+</div>
+<p>Once I’ve filled in the details asked for (which I  can change later) i udpdate the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file which the <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> auto-created.  My most recent conf.py file can be found in the github repo in the <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> folder.</p>
+</div>
+<div class="section" id="begin-creating-documentation">
+<h2>Begin creating documentation<a class="headerlink" href="#begin-creating-documentation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><p>The “main” file is the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file found in the <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> folder.  It contains text for the start of the docs and lists the other pages in the sequence in which they will be rendered.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">.rst</span></code> extension indicates “Restructured Text (ReST) formatting which is similar to markdown .md mark-up.</p></li>
 <li><p>At first glance they both <code class="docutils literal notranslate"><span class="pre">.md</span></code> markup and ReST look similar in objectives but with different syntax but it seems that .md is see as a light-weight with <code class="docutils literal notranslate"><span class="pre">.rst</span></code> being favoured for use in technical documentation.  Some discussion on this can be found <a class="reference external" href="https://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/">here.</a></p></li>
-<li><p>I’ve found a few reference for looking up <code class="docutils literal notranslate"><span class="pre">.rst</span></code> syntax including:
-- <a class="reference external" href="https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#introduction">https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#introduction</a>
-- <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html</a></p></li>
-</ul>
-<ol class="arabic simple" start="6">
-<li><p>Once the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> and other pages are ready in the <code class="docutils literal notranslate"><span class="pre">/docs/source</span></code> folder i then <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code> up one level and build the documentation by running:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>make clean
-make html
-</pre></div>
-</td></tr></table></div>
-<p>There are usually some formatting errors that are flagged and will need to be fixed before running the above and only then proceed to…</p>
-<ol class="arabic simple" start="7">
-<li><p>Commit and push back to github.com</p></li>
-</ol>
-<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>git add --all
-git commit -m <span class="s2">&quot;an initial commit&quot;</span>
-git push -u origin master
-</pre></div>
-</td></tr></table></div>
-<ol class="arabic simple" start="8">
-<li><p>Navigate to www.readthedocs.org, login, and go to your projects <a class="reference external" href="https://readthedocs.org/dashboard/">dashboard</a> and then click on “import a project” button.  Select the repo that should be listed.</p></li>
-</ol>
-</div>
-</div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Creation of these docs</a><ul>
-<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li><a class="reference internal" href="#github-repository">Github Repository</a></li>
-<li><a class="reference internal" href="#raspberry-pi-set-up">Raspberry pi set-up</a></li>
+<li><p>I’ve found a few reference for looking up <code class="docutils literal notranslate"><span class="pre">.rst</span></code> syntax including:</p>
+<ul>
+<li><p><a class="reference external" href="https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#introduction">https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#introduction</a></p></li>
+<li><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html</a></p></li>
 </ul>
 </li>
 </ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="recipes.html"
-                        title="previous chapter">Collection of Recipes</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/readthedocs.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<div class="section" id="build-docs-and-push-back-to-github">
+<h2>Build Docs and push back to github<a class="headerlink" href="#build-docs-and-push-back-to-github" title="Permalink to this headline">¶</a></h2>
+<p>Once the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> and other pages are ready in the <code class="docutils literal notranslate"><span class="pre">/docs/source</span></code> folder i then <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code> up one level and build the documentation by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make clean
+make html
+</pre></div>
+</div>
+<p>There are usually some formatting errors that are flagged and will need to be fixed before running the above and only then proceed to…</p>
+<p>Commit and push back to github.com with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add --all
+git commit -m <span class="s2">&quot;an initial commit&quot;</span>
+git push -u origin master
+</pre></div>
+</div>
+</div>
+<div class="section" id="import-to-readthedocs-org">
+<h2>Import to readthedocs.org<a class="headerlink" href="#import-to-readthedocs-org" title="Permalink to this headline">¶</a></h2>
+<p>Make any refinements to the docs via github editing and then when ready navigate to www.readthedocs.org, login, and go to the projects <a class="reference external" href="https://readthedocs.org/dashboard/">dashboard</a> and click on “import a project” button.  Select the repo that should be listed on the dashboard.  Once built the online docs are visible on <a class="reference external" href="https://raspi-recipes.readthedocs.io">https://raspi-recipes.readthedocs.io</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, essans
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="recipes.html" title="Collection of Recipes"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Raspberry Pi Cluster 0.0.1 documentation</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, essans.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
 </html>
