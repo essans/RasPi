@@ -1,15 +1,8 @@
 Creation of this documentation
 ==============================
+The "read the docs" theme for online documentation is used across the web for `technical documentation <https://bloomberg.github.io/blpapi-docs/python/3.13/blpapi-package.html>`_ and for `lighter weight topics <http://cozmosdk.anki.com/docs/index.html>`_. 
 
-In creating a set of recipes that for the raspberry-pi I will document things along the way.   This is something I already do for other things: Whether it is setting up a new computer, noting down a new piece of code, or script for future use, or a technique for solving a problem. 
-
-I am a big note taker, whether it is handwritten in a notebook (I'm a big fan of the `Barron Fig <http://www.barronfig.com/>`_ Vanguard softcover notebooks - always dot grid), and I also use a combination of Evernote and private github repositories.
-
-For my raspberry-pi projects I want to experiment with documenting things on the web.  I started with a collection of markdown and code pages in a public github repository but it was difficult to keep things organized and make available in a form that is usable for the purpose in mind.  
-
-The "read the docs" theme for online documentation is used across the web for `technical documentation <https://bloomberg.github.io/blpapi-docs/python/3.13/blpapi-package.html>`_ and for `lighter weight topics <http://cozmosdk.anki.com/docs/index.html>`_.  My thinking is that maybe the same will work for documenting a collection of recipes for the raspberry-pi.  
-
-This section documents how I'm going about doing this.  A recipe in and of itself.
+This section documents the documentation creation process.  A recipe in and of itself.
 
 
 Prerequisites
