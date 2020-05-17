@@ -20,7 +20,7 @@ The raspberry-pi is cheap.  It is also fun to tinker with :)
 
 
 Collection of Recipes
-=====================
+---------------------
 
 I try not to do things randomly.  
 
