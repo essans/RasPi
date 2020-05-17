@@ -20,5 +20,6 @@ a collection of recipes for the Raspberry Pi
 
    intro
    initialSetup
+   networking
    readthedocs
 
