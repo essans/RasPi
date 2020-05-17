@@ -10,9 +10,7 @@ a collection of recipes for the Raspberry Pi
 |
 
 .. image:: images/raspi4_diagram.png
-    :width: 800px
     :align: center
-    :height: 500px
     :alt: raspberry_4_diagram
 
 
