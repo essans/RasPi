@@ -6,6 +6,13 @@
 a collection of recipes for the Raspberry Pi
 ============================================
 
+.. image:: /images/raspi4_diagram.png
+    :width: 200px
+    :align: center
+    :height: 200px
+    :alt: raspberry_4_diagram
+
+
 .. toctree::
    :maxdepth: 3
    :hidden:
