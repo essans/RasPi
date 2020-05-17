@@ -96,7 +96,9 @@ Update the OS and other programs
     
 
 Enable VNC access
-^^^^^^^^^^^^^^^^^
+=================
+
+
 
 
 
