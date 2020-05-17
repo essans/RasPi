@@ -7,7 +7,7 @@ Unless purchased in a "product bundle" raspberry-pi arrive as a single-board-com
   * Micro SD card (class 10, UHS-1 for faster speed.  16gb or 32gb)
   * Power supply (see `here <https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md>`_ )
 
-Notice keyboard, mouse, monitor (and HDMI cable) are not listed here as the the raspberry Pi machines will mostly be operated "headless" which means access will be remote using ``ssh`` or ``vnc``.
+Notice keyboard, mouse, monitor (and HDMI cable) are not listed here as the the raspberry Pi machines will mostly be operated "headless" which means access will be remote using Secure Shell (SSH) protocol or Virtual Network Computing (VNC).
 
 -----
 
@@ -98,7 +98,7 @@ Update the OS and other programs
 Enable VNC access
 =================
 
-In the same way that SSH allows access to the command line of the raspberry pi,  VNC (Virtual Networking Computing) allows access to the GUI of the raspberry pi if/when needed.   
+In the same way that SSH (Secure Shell) allows access to the command line of the raspberry pi,  VNC (Virtual Networking Computing) allows access to the GUI of the raspberry pi if/when needed.   
 
 1) Enable VNC via ```sudo raspi-config``` if not already done.
 
