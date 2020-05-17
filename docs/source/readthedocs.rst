@@ -76,7 +76,7 @@ Running ``sphinx-quickstart`` enables quick set-up of some preliminary informati
 Begin creating documentation
 ----------------------------
 
-1. The "main" file is the ``index.rst`` file found in the ``docs/source`` folder.  It contains text for the start of the docs and lists the other pages in the sequence in which they will be rendered.
+1. The "main" file is the ``index.rst`` file found in the ``docs/source`` folder.  It contains text for the start of the docs and lists the other pages in the sequence in which they will be rendered.  Create the other documents also as ``.rst`` files.
 
 
 2. The ``.rst`` extension indicates "Restructured Text (ReST) formatting which is similar to markdown .md mark-up.
@@ -85,10 +85,12 @@ Begin creating documentation
 3. At first glance they both ``.md`` markup and ReST look similar in objectives but with different syntax but it seems that .md is see as a light-weight with ``.rst`` being favoured for use in technical documentation.  Some discussion on this can be found `here. <https://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/>`_ 
 
 
-4. I've found a few reference for looking up ``.rst`` syntax including: 
+4. I've found a few references for looking up ``.rst`` syntax including: 
 
   - https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#introduction
   - https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
+  - https://sphinx-rtd-theme.readthedocs.io/en/stable/demo/structure.html
+  
 
 --------
 
