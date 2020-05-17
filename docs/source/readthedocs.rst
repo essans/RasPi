@@ -90,6 +90,7 @@ Begin creating documentation
   - https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#introduction
   - https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
   - https://sphinx-rtd-theme.readthedocs.io/en/stable/demo/structure.html
+  - https://docutils.sourceforge.io/docs/user/rst/quickref.html
   
 
 --------
