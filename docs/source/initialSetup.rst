@@ -2,6 +2,7 @@
 Raspberry Pi initial setup
 **************************
 
+
 Unless purchased in a "product bundle" raspberry-pi arrive as a single-board-computer.  Nothing else.  Each board requires:
   * Micro SD card (class 10, UHS-1 for faster speed.  16gb or 32gb)
   * Power supply (see `here <https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md>`_ )
@@ -19,7 +20,7 @@ The Raspberry Pi Foundation now `provides <https://www.raspberrypi.org/documenta
 
 Alternatively for a little more control:
 
-1) Download and save in a folder the latest Rasbian images from `here <https://www.raspberrypi.org/downloads/raspbian/`_.  At least one raspi should have the full version which include the GUI the OS and other software.  Likely though the lite version which does not come a GUI nor other softare will suffice as we'll be accessing from the command line over ssh. 
+1) Download and save in a folder the latest Rasbian images from `here <https://www.raspberrypi.org/downloads/raspbian/>`_.  At least one raspi should have the full version which include the GUI the OS and other software.  Likely though the lite version which does not come a GUI nor other softare will suffice as we'll be accessing from the command line over ssh. 
     
 2) Flash the image onto an SD Card using `etcher <https://www.balena.io/etcher/>`_ for Mac OS. 
 
