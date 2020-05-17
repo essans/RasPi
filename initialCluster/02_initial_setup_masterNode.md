@@ -117,7 +117,7 @@ sudo iptables -t nat -L
 
 The following diagram illustrates how this masquerading and network address translation will work once the worker nodes are set-up:
 
-![](https://github.com/essans/RasPi/blob/master/images/raspi_cluster_nat.png)
+![](https://github.com/essans/RasPi/blob/master/docs/source/images/raspi_cluster_nat.png)
 
 The way it works is as follows:
 
@@ -127,7 +127,7 @@ The way it works is as follows:
 
 At each step of the way mappings and tables are maintained so that when a response is received from the internet it knows how to find its way back to node2 which sits in an isolated part of the network.
 
-![](https://github.com/essans/RasPi/blob/master/images/raspi_cluster_node2_ping.png)
+![](github.com/essans/RasPi/blob/master/docs/source/images//raspi_cluster_node2_ping.png)
 
 Node 2 can communicate outside of the cluster but nothing outside the isolated network can communicate in.
 
