@@ -2,8 +2,8 @@
 Raspberry Pi initial setup
 ==========================
 
-
 Unless purchased in a "product bundle" raspberry-pi arrive as a single-board-computer.  Nothing else.  Each board requires:
+
   * Micro SD card (class 10, UHS-1 for faster speed.  16gb or 32gb)
   * Power supply (see `here <https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md>`_ )
 
