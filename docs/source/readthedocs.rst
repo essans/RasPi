@@ -44,9 +44,9 @@ and Install a couple of packages needed to build the docs:
 
    -  `<https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html>`_.  
    
-I made some changes along the way, but it was a good place to start.  Lots of trial and error. 
+   - I made some changes along the way, but it was a good place to start.  Lots of trial and error. 
 
-The ``sphinx-rtd-theme`` package is for the theme used for the documentation, and the ``recommonmark`` package enables the use of .md pages along with the .rst pages that are more commonly used.
+   - The ``sphinx-rtd-theme`` package is for the theme used for the documentation, and the ``recommonmark`` package enables the use of .md pages along with the .rst pages that are more commonly used.
 
 In my home directory I keep all the github material in its own subdirectory created with ``mkdir github``.  Now I retrieve the information from github.com repo:
 
@@ -68,7 +68,7 @@ Set some configurations:
    sphinx-quickstart
 
 
-Once I've filled in the details asked for (which I  can change later) i udpdate the ``conf.py`` file which the ``sphinx-quickstart`` auto-created.  My most recent conf.py file can be found in the github repo in the ``docs/source`` folder.
+Running ``sphinx-quickstart`` enables quick set-up of some preliminary information which can be changed later.  I then update the ``conf.py`` file which was auto-created during the quickstart.  The most recent conf.py file can be found in the github repo in the ``docs/source`` folder.
 
 
 Begin creating documentation
