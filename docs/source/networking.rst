@@ -16,6 +16,7 @@ There are also other Raspberry Pi boards that connect to the same router via wif
     :align: center
     :alt: raspi4a_as_accesspoint
 
+-----
 
 Objective
 ^^^^^^^^^
@@ -27,17 +28,21 @@ Reduce number of wifi devices connecting to the internet router by directing ras
     :alt: network
 
 
+-----
+
 Access Point set-up
 ^^^^^^^^^^^^^^^^^^^
 
-(1) Check for updates
+This involves changes various network configurations so it's a good idea to clone the SD Card so that there is a point to revert any changes back to.  Also, changes in network settings may result in lost SSH connection so use a monitor and keyboard to be on the safe side...
+
+**(1) Check for updates**
 
 .. code-block:: bash
 
     sudo apt-get update
     sudo apt-get upgrade
     
-(2) Install required packages
+**(2) Install required packages**
 
 .. code-block:: bash
 
@@ -45,14 +50,14 @@ Access Point set-up
     sudo apt-get install dnsmasq   # easy-to-use DHCP and DNS server
     sudo apt install bridge-utils  # to enable bridge between eth0 and wireless 
     
-(3) Switch off servces before changing any configurations:
+**(3) Switch off servces before changing any configurations:**
 
 .. code-block:: bash
 
     sudo systemctl stop hostapd
     sudo systemctl stop dnsmasq
     
-(4) Edit the dhcpcd configuration file ``/etc/dhcpcd.conf`` and add:
+**(4) Edit the dhcpcd configuration file ``/etc/dhcpcd.conf`` and add:**
 
 .. code-block:: bash
 
@@ -82,13 +87,13 @@ Access Point set-up
     static domain_name_servers=8.8.8.8
     
 
-(5) Restart the dhcp service:
+**(5) Restart the dhcp service:**
 
 .. code-block:: bash
     
     sudo service dhcpcd restart
     
-(6) Configure the DHCP server/masq configuration file ``/etc/dnsmasq.conf`` by adding:
+**(6) Configure the DHCP server/masq configuration file ``/etc/dnsmasq.conf`` by adding:**
 
 .. code-block:: bash
 
@@ -99,5 +104,11 @@ The way to undersand this is that for ``wlano`` we are going to provide IP addre
 
 There are many more options for dnsmasq. See `dnsmasq documentation <http://www.thekelleys.org.uk/dnsmasq/doc.html>`_  for more details.
 
+**(7) Restart service**
+
+.. code-block:: bash
+
+    sudo systemctl start dnsmasq
     
+
     
