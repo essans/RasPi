@@ -41,6 +41,63 @@ Access Point set-up
 
 .. code-block:: bash
 
-    sudo apt-get install hostapd   #package that lets us create a wireless hotspot
-    sudo apt-get install dnsmasq   #easy-to-use DHCP and DNS server
-    sudo apt install bridge-utils  #to enable bridge between eth0 and wireless 
+    sudo apt-get install hostapd   # to create a wireless hotspot
+    sudo apt-get install dnsmasq   # easy-to-use DHCP and DNS server
+    sudo apt install bridge-utils  # to enable bridge between eth0 and wireless 
+    
+(3) Switch off servces before changing any configurations:
+
+.. code-block:: bash
+
+    sudo systemctl stop hostapd
+    sudo systemctl stop dnsmasq
+    
+(4) Edit the dhcpcd configuration file ``/etc/dhcpcd.conf`` and add:
+
+.. code-block:: bash
+
+    # These first 2 lines were added later after lots of trial and error... 
+    # Both are needed to ensure that the bridge works correctly.
+    # They stop the eth0 and wlan0 ports being allocated IP 
+    # addresses by the DHCP client on the Raspberry Pi
+
+    denyinterfaces wlan0    
+    denyinterfaces eth0     
+
+
+    # Next configure a static IP for the wlan0 interface
+
+    interface wlan0
+    static ip_address=192.168.4.1/24
+    nohook wpa_supplicant
+
+
+    # static IP address to enable ssh and also accessing 
+    # the internet from the raspberry pi.
+    # This bit was also discovered after some trial and error...
+
+    interface br0
+    static ip_address=192.168.1.184/24  # assigning to AP
+    static routers=192.168.1.1
+    static domain_name_servers=8.8.8.8
+    
+
+(5) Restart the dhcp service:
+
+.. code-block:: bash
+    
+    sudo service dhcpcd restart
+    
+(6) Configure the DHCP server/masq configuration file ``/etc/dnsmasq.conf`` by adding:
+
+.. code-block:: bash
+
+    interface=wlan0
+    dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h    # addresses for clients
+    
+The way to undersand this is that for ``wlano`` we are going to provide IP addresses between ``192.168.4.2 and 192.168.4.20``, with a lease time of 24 hours. If providing DHCP services for other network devices (e.g. eth0), we would add more sections with the appropriate interface header, with the range of addresses intended to provide to the additional interface.
+
+There are many more options for dnsmasq. See `_dnsmasq documentation <http://www.thekelleys.org.uk/dnsmasq/doc.html`>  for more details.
+
+    
+    
