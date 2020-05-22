@@ -97,7 +97,7 @@ Access Point set-up
     
 The way to undersand this is that for ``wlano`` we are going to provide IP addresses between ``192.168.4.2 and 192.168.4.20``, with a lease time of 24 hours. If providing DHCP services for other network devices (e.g. eth0), we would add more sections with the appropriate interface header, with the range of addresses intended to provide to the additional interface.
 
-There are many more options for dnsmasq. See `_dnsmasq documentation <http://www.thekelleys.org.uk/dnsmasq/doc.html`>  for more details.
+There are many more options for dnsmasq. See `dnsmasq documentation <http://www.thekelleys.org.uk/dnsmasq/doc.html`>  for more details.
 
     
     
