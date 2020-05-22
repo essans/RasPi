@@ -26,5 +26,21 @@ Reduce number of wifi devices connecting to the internet router by directing ras
     :align: center
     :alt: network
 
+
 Access Point set-up
 ^^^^^^^^^^^^^^^^^^^
+
+(1) Check for updates
+
+.. code-block:: bash
+
+    sudo apt-get update
+    sudo apt-get upgrade
+    
+(2) Install required packages
+
+.. code-block:: bash
+
+    sudo apt-get install hostapd   #package that lets us create a wireless hotspot
+    sudo apt-get install dnsmasq   #easy-to-use DHCP and DNS server
+    sudo apt install bridge-utils  #to enable bridge between eth0 and wireless 
