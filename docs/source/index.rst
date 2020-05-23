@@ -9,22 +9,33 @@ a collection of recipes for the Raspberry Pi
 |
 |
 
-.. role:: bash(code)
-   :language: bash
-   
-
 .. image:: images/raspi4_diagram.png
     :align: center
     :alt: raspberry_4_diagram
 
 
 .. toctree::
+   :caption: Set-up, Configuration
    :maxdepth: 3
    :hidden:
 
    intro
    initialSetup
-   networking
-   clusterComputing
    readthedocs
+   
+.. toctree::
+   :caption: Networking
+   :maxdepth: 3
+   :hidden:
 
+   accessPoint
+   
+   
+.. toctree::
+   :caption: Cluster Computing
+   :maxdepth: 3
+
+   clusterComputingOverview
+   clusterComputingMasterNode
+   clusterComputingWorkerNodes
+     
