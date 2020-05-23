@@ -290,7 +290,8 @@ There should now be a functioning bridge between the wireless LAN and the Ethern
 
 -----
 
-**References**
+References
+^^^^^^^^^^
 
 The steps above resulted from much trial-and-error.  Along the way the good use was made of the following articles with much insight gained:
 
