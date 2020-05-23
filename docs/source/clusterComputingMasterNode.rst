@@ -145,6 +145,8 @@ The way it works is as follows:
 
 At each step of the way mappings and tables are maintained so that when a response is received from the internet it knows how to find its way back to node2 which sits in an isolated part of the network.
 
+-----
+
 .. image:: images/raspi_cluster_node2_ping.png
     :align: center
     :alt: clusterInternetAccess
