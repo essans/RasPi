@@ -3,7 +3,7 @@ Cluster Computing
 =================
 
 Overview
-^^^^^^^^
+--------
 
 
 This recipe documets the steps taken in setting-up a cluster of Raspberry Pis.  The idea is to try a few different approaches and in doing so reinforce understanding of some of the principles relating to linux networking, distributed computing and a few other things...
@@ -11,7 +11,7 @@ This recipe documets the steps taken in setting-up a cluster of Raspberry Pis.  
 -----
 
 Architecture/Framework
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 The architecture for this first cluster will comprise of 5 Raspberry Pi 3 Model B+ worker nodes, powered by a USB power supply unit and networked together via a simple unmanaged switch. The master node will be a Raspberry Pi 4 (4gb RAM) on a separate power-supply wired into the same network switch.
 
 The master node will connect to the internet via wireless LAN and using "IP Masquerading" will provide gateway access to the internet for the worker nodes only when needed.
@@ -29,8 +29,6 @@ Operating system on master and worker nodes will be Raspbian/Debian flavour of l
 -----
 
 **Parts List**
-
-
 
 
 +----------+-------------------------------------------------------------+-----------+---------+
@@ -67,9 +65,12 @@ Operating system on master and worker nodes will be Raspbian/Debian flavour of l
 
 
 Set-up of Master Node
-^^^^^^^^^^^^^^^^^^^^^^
+---------------------
+This is the Raspberry pi which will control and manage the set of worker nodes.  
 
-**Install and configure operating system**
+
+Install and configure operating system
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 (1) See: https://raspi-recipes.readthedocs.io/en/latest/initialSetup.html#
 
@@ -81,10 +82,111 @@ Set-up of Master Node
 
         sudo pip3 install fabric
 
+
 ------
 
-**Configure Master Node as conduit for internet access for cluster**
+Configure Master Node as conduit for internet access
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Master Node will be the sole device on the cluster that connects to the internet. When worker nodes require internet access then they will connect via the Master Node (if allowed). The set-up here is based on what was learned when configuring another Raspberry Pi to provide service as a secondary `access point <https://raspi-recipes.readthedocs.io/en/latest/networking.html#create-wireless-access-point>`_ .
 
+**(1) Install linux command line utility dnsmasq and then stop the service before making configuration changes**
 
+    .. code-block:: bash
+
+        sudo apt-get install dnsmasq
+
+        sudo systemctl stop dnsmasq
+
+**(2) Edit the DHCP client daemon configuration file**
+
+    .. code-block:: bash
+
+            sudo nano /etc/dhcpcd.conf
+            
+...adding the following lines at the bottom in order to assign a static IP address to the master node:
+
+    .. code-block:: bash
+
+        interface eth0
+        static ip_address=192.168.5.1/24 
+        
+Save, exit, and then restart the service:
+
+    .. code-block:: bash
+
+        sudo service dhcpcd restart
+        
+
+**(3) Control assignment of IP addresses to the worker nodes:
+
+    .. code-block:: bash
+
+        sudo nano /etc/dnsmasq.conf
+        
+After making sure that *every* line is commented out (usually the case, but there might be two at the bottom) add the following lines:
+
+    .. code-block:: bash
+
+        interface=eth0 # internet service to the nodes via ethernet 
+        dhcp-range=192.168.5.2,192.168.5.64,255.255.255.0,24h # range of IP addresses
+    
+save, exit and then restart the service:
+
+    .. code-block:: bash
+
+        sudo systemctl start dnsmasq
+        
+**(4) Enable IP forwarding.
+
+    .. code-block:: bash
+
+        sudo nano /etc/sysctl.conf
+    
+uncomment/enable this line:
+
+    .. code-block:: bash
+        net.ipv4.ip_forward=1
+        
+**(5) Now I need to update iptables to configure the ip packet filter rules in order to allow all worker nodes to essentially use the IP address of the master node when connecting to the internet. This is known as *masquerading* and the firewall keeps track of the incoming and outgoing connections (ie how to directly traffic to/from the relevant node) using Network Address Translation (NAT). Essentially by keeping tracking of ports and MAC addresses.
+
+    .. code-block:: bash
+
+        sudo iptables -t nat -A  POSTROUTING -o wlan0 -j MASQUERADE
+        
+and then save the rules so they are not lost upon reboot:
+
+    .. code-block:: bash
+
+        sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+
+Then edit this file so that rules are installed upon boot:
+
+    .. code-block:: bash
+
+        sudo nano /etc/rc.local
+    
+and add the following line just above the "exit 0":
+
+    .. code-block:: bash
+
+        iptables-restore < /etc/iptables.ipv4.nat
+    
+Now reboot the master node.   To list the rules in iptables:
+
+
+    .. code-block:: bash
+
+        sudo iptables -t nat -L
+    
+-----
+
+    
+    
+    
+    
+    
+    
+        
+        
