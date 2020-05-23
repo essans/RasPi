@@ -59,7 +59,9 @@ This involves changes to various network configurations so it's a good idea to c
     
 **(4) Edit the dhcpcd configuration file**
 
-``sudo nano /etc/dhcpcd.conf`` and add:
+``sudo nano /etc/dhcpcd.conf`` 
+
+and add:
 
 .. code-block:: bash
 
@@ -97,14 +99,16 @@ This involves changes to various network configurations so it's a good idea to c
     
 **(6) Configure the DHCP server/masq configuration file** 
 
-``sudo nano /etc/dnsmasq.conf`` and by add:
+``sudo nano /etc/dnsmasq.conf`` 
+
+and by add:
 
 .. code-block:: bash
 
     interface=wlan0
     dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h    # addresses for clients
     
-The way to undersand this is that for ``wlano`` we are going to provide IP addresses between ``192.168.4.2 and 192.168.4.20``, with a lease time of 24 hours. If providing DHCP services for other network devices (e.g. eth0), we would add more sections with the appropriate interface header, with the range of addresses intended to provide to the additional interface.
+The way to undersand this is that for ``wlano`` we are going to provide IP addresses between ``192.168.4.2 and 192.168.4.20``, with a lease time of 24 hours. If providing DHCP services for other network devices (e.g. ``eth0``), we would add more sections with the appropriate interface header, with the range of addresses intended to provide to the additional interface.
 
 There are many more options for dnsmasq. See `dnsmasq documentation <http://www.thekelleys.org.uk/dnsmasq/doc.html>`_  for more details.
 
@@ -117,7 +121,9 @@ There are many more options for dnsmasq. See `dnsmasq documentation <http://www.
 
 **(8) Configure the access point host software** 
 
-``sudo nano /etc/hostapd.conf`` and add:
+``sudo nano /etc/hostapd.conf`` 
+
+and add:
 
 .. code-block:: bash
 
@@ -143,12 +149,14 @@ There are many more options for dnsmasq. See `dnsmasq documentation <http://www.
     # g = IEEE 802.11g (2.4 GHz)
     # ad = IEEE 802.11ad (60 GHz) (Not available on the Raspberry Pi)
     
-The commented out ``driver=nl80211`` whould have been needed if using as stand-one access point without a a bridge.
+The commented out ``driver=nl80211`` would have been needed if using as stand-one access point without a a bridge.
 
 
 **(9) Edit the following file:**
 
-``sudo nano /etc/default/hostapd`` to indicate location of the config file:
+``sudo nano /etc/default/hostapd`` 
+
+to indicate location of the config file:
 
 .. code-block:: bash
 
@@ -171,7 +179,9 @@ and check status:
     
 **(11) Add routing and masquerade by first...**
 
-``sudo nano /etc/sysctl.conf`` and uncomment/enable this list:
+``sudo nano /etc/sysctl.conf`` 
+
+and uncomment/enable this list:
 
 .. code-block:: bash
     
@@ -191,7 +201,9 @@ and save the iptables rule
     
 **(13) Edit the following file**
 
-``sudo nano /etc/rc.local`` and add the following line just above the "exit 0" so that the these rules install on boot:
+``sudo nano /etc/rc.local`` 
+
+and add the following line just above the "exit 0" so that the these rules install on boot:
 
 
 .. code-block:: bash 
@@ -219,9 +231,11 @@ If SSH is enabled on the Raspberry Pi access point, it should be possible to con
     sudo brctl addif br0 eth0   #make the connection
 
 
-Create a file in order to create a linux bridge (br0) and add a physical interface (eth0) to the bridge:
+Create a file in order to create a linux bridge ``br0`` and add a physical interface ``eth0`` to the bridge:
 
-``sudo nano /etc/systemd/network/bridge-br0.netdev`` and add these lines:
+``sudo nano /etc/systemd/network/bridge-br0.netdev`` 
+
+and add these lines:
 
 .. code-block:: bash
 
@@ -230,9 +244,11 @@ Create a file in order to create a linux bridge (br0) and add a physical interfa
     Kind=bridge
     
     
-**(16) Configure the bridge interface br0 and the slave interface etho using .network files as follows:
+**(16) Configure the bridge interface br0 and the slave interface etho using .network files as follows:**
 
-``sudo nano /etc/systemd/network/bridge-br0-slave.network`` and add:
+``sudo nano /etc/systemd/network/bridge-br0-slave.network`` 
+
+and add:
 
 .. code-block:: bash
    
@@ -242,7 +258,9 @@ Create a file in order to create a linux bridge (br0) and add a physical interfa
     [Network]
     Bridge=br0
 
-``sudo nano /etc/systemd/network/bridge-br0.network`` and add:
+``sudo nano /etc/systemd/network/bridge-br0.network`` 
+
+and add:
 
  .. code-block:: bash
  
