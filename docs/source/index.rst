@@ -9,6 +9,10 @@ a collection of recipes for the Raspberry Pi
 |
 |
 
+.. role:: bash(code)
+   :language: bash
+   
+
 .. image:: images/raspi4_diagram.png
     :align: center
     :alt: raspberry_4_diagram
