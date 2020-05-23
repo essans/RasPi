@@ -74,11 +74,11 @@ Set-up of Master Node
 
 (2) Install python (in case not already installed), along with the `fabric package <http://www.fabfile.org/>`_ that will be needed later.
 
-.. code-block:: bash
+    .. code-block:: bash
 
-    sudo apt install python3-pip
+        sudo apt install python3-pip
 
-    sudo pip3 install fabric
+        sudo pip3 install fabric
 
 -----
 
