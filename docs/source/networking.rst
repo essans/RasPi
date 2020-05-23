@@ -59,7 +59,7 @@ This involves changes to various network configurations so it's a good idea to c
     
 **(4) Edit the dhcpcd configuration file**
 
-`sudo nano /etc/dhcpcd.conf` and add:
+:code:`sudo nano /etc/dhcpcd.conf` and add:
 
 .. code-block:: bash
 
