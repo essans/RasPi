@@ -33,7 +33,7 @@ Reduce number of wifi devices connecting to the internet router by directing ras
 Access Point set-up
 ^^^^^^^^^^^^^^^^^^^
 
-This involves changes various network configurations so it's a good idea to clone the SD Card so that there is a point to revert any changes back to.  Also, changes in network settings may result in lost SSH connection so use a monitor and keyboard to be on the safe side...
+This involves changes to various network configurations so it's a good idea to clone the SD Card so that there is a point to revert any changes back to.  Also, changes in network settings may result in lost SSH connection so use a monitor and keyboard to be on the safe side...
 
 **(1) Check for updates**
 
@@ -57,7 +57,9 @@ This involves changes various network configurations so it's a good idea to clon
     sudo systemctl stop hostapd
     sudo systemctl stop dnsmasq
     
-**(4) Edit the dhcpcd configuration file ``/etc/dhcpcd.conf`` and add:**
+**(4) Edit the dhcpcd configuration file**
+
+``sudo nano /etc/dhcpcd.conf`` and add:
 
 .. code-block:: bash
 
@@ -93,7 +95,9 @@ This involves changes various network configurations so it's a good idea to clon
     
     sudo service dhcpcd restart
     
-**(6) Configure the DHCP server/masq configuration file ``/etc/dnsmasq.conf`` by adding:**
+**(6) Configure the DHCP server/masq configuration file** 
+
+``sudo nano /etc/dnsmasq.conf`` and by add:
 
 .. code-block:: bash
 
@@ -109,6 +113,197 @@ There are many more options for dnsmasq. See `dnsmasq documentation <http://www.
 .. code-block:: bash
 
     sudo systemctl start dnsmasq
+    
+
+**(8) Configure the access point host software** 
+
+``sudo nano /etc/hostapd.conf`` and add:
+
+.. code-block:: bash
+
+    nterface=wlan0
+    #driver=nl80211
+    bridge=br0
+    hw_mode=g
+    channel=7
+    wmm_enabled=0
+    macaddr_acl=0
+    auth_algs=1
+    ignore_broadcast_ssid=0
+    wpa=2
+    wpa_key_mgmt=WPA-PSK
+    wpa_pairwise=TKIP
+    rsn_pairwise=CCMP
+    ssid=RASPI-NET  # choose ssid as desired
+    wpa_passphrase=<password_goes_here>
+    
+    # hw_mode options above:
+    # a = a = IEEE 802.11a (5 GHz)
+    # b = IEEE 802.11b (2.4 GHz)
+    # g = IEEE 802.11g (2.4 GHz)
+    # ad = IEEE 802.11ad (60 GHz) (Not available on the Raspberry Pi)
+    
+The commented out ``driver=nl80211`` whould have been needed if using as stand-one access point without a a bridge.
+
+
+**(9) Edit the following file:**
+
+``sudo nano /etc/default/hostapd`` to indicate location of the config file:
+
+.. code-block:: bash
+
+    DAEMON_CONF="/etc/hostapd/hostapd.conf"
+    
+**(10) Enable and start service**
+
+.. code-block:: bash
+
+    sudo systemctl unmask hostapd
+    sudo systemctl enable hostapd
+    sudo systemctl start hostapd
+   
+and check status:
+
+.. code-block:: bash
+
+    sudo systemctl status hostapd
+    sudo systemctl status dnsmasq
+    
+**(11) Add routing and masquerade by first...**
+
+``sudo nano /etc/sysctl.conf`` and uncomment/enable this list:
+
+.. code-block:: bash
+    
+    net.ipv4.ip_forward=1
+    
+**(12) and then, add a masquerade for outbound traffic on eth0:
+
+.. code-block:: bash 
+
+    sudo iptables -t nat -A  POSTROUTING -o eth0 -j MASQUERADE
+    
+and save the iptables rule
+
+.. code-block:: bash 
+
+    sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+    
+**(13) Edit the following file**
+
+``sudo nano /etc/rc.local`` and add the following line just above the "exit 0" so that the these rules install on boot:
+
+
+.. code-block:: bash 
+
+    iptables-restore < /etc/iptables.ipv4.nat
+    
+
+**(14) Now, reboot the raspberry pi and the test before moving on to the next part of the set-up.**
+
+Using a wireless device, search for networks.
+
+The network SSID specified in the hostapd configuration should discoverable, and it should be accessible with the specified password.
+
+If SSH is enabled on the Raspberry Pi access point, it should be possible to connect to it with ``ssh pi@192.168.4.1``
+
+
+**(15) Create bridge in order to share internet access**
+
+.. code-block:: bash
+
+    sudo systemctl stop hostapd
+
+    sudo brctl addbr br0   #add the bridge
+
+    sudo brctl addif br0 eth0   #make the connection
+
+
+Create a file in order to create a linux bridge (br0) and add a physical interface (eth0) to the bridge:
+
+``sudo nano /etc/systemd/network/bridge-br0.netdev`` and add these lines:
+
+.. code-block:: bash
+
+    [NetDev]
+    Name=br0
+    Kind=bridge
+    
+    
+**(16) Configure the bridge interface br0 and the slave interface etho using .network files as follows:
+
+``sudo nano /etc/systemd/network/bridge-br0-slave.network`` and add:
+
+.. code-block:: bash
+   
+   [Match]
+    Name=eth0
+
+    [Network]
+    Bridge=br0
+
+``sudo nano /etc/systemd/network/bridge-br0.network`` and add:
+
+ .. code-block:: bash
+ 
+    Match]
+    Name=br0
+
+    [Network]
+    Address=192.168.10.100/24
+    Gateway=192.168.10.1
+    DNS=8.8.8.8
+
+then restart service:
+
+``sudo systemctl restart systemd-networkd``
+
+Use ``brctl`` to verify that bridge ``br0`` has been created.  
+
+Then reboot and run:
+
+.. code-block:: bash
+
+    sudo systemctl unmask hostapd
+    sudo systemctl enable hostapd
+    sudo systemctl start hostapd
+    
+There should now be a functioning bridge between the wireless LAN and the Ethernet connection on the Raspberry Pi, and any device associated with the Raspberry Pi access point will act as if it is connected to the access point's wired Ethernet. The bridge will have been allocated an IP address via the wired Ethernet's DHCP server. Do a quick check of the network interfaces configuration via ``ip addr``
+
+-----
+
+**References**
+
+The steps above resulted from much trial-and-error.  Along the way the good use was made of the following articles with much insight gained:
+
+https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md
+
+https://thepi.io/how-to-use-your-raspberry-pi-as-a-wireless-access-point/
+
+https://seravo.fi/2014/create-wireless-access-point-hostapd
+
+https://howtoraspberrypi.com/create-a-wi-fi-hotspot-in-less-than-10-minutes-with-pi-raspberry/
+
+http://raspberrypihq.com/how-to-turn-a-raspberry-pi-into-a-wifi-router/
+
+https://www.instructables.com/id/Use-Raspberry-Pi-3-As-Router/
+
+This might be interesting to explore one day….
+
+https://imti.co/iot-wifi/
+
+
+
+    
+
+
+
+    
+    
+
+    
+
+
     
 
     
