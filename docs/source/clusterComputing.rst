@@ -3,7 +3,8 @@ Cluster Computing
 =================
 
 Overview
---------
+^^^^^^^^
+
 
 This recipe documets the steps taken in setting-up a cluster of Raspberry Pis.  The idea is to try a few different approaches and in doing so reinforce understanding of some of the principles relating to linux networking, distributed computing and a few other things...
 
