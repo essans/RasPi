@@ -14,6 +14,8 @@ a collection of recipes for the Raspberry Pi
     :alt: raspberry_4_diagram
 
 
+
+
 .. toctree::
    :caption: Set-up, Configuration
    :maxdepth: 3
