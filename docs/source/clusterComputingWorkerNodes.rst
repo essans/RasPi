@@ -2,8 +2,17 @@
 Set-up of Worker Nodes
 ======================
 
-Connect and power-up everything.
-
+Connect components:
+        - Run power from power-hub to each worker node
+        - Connect each worker-node to network switch
+        - Connect master-node to internet switch
+        
+Switch on power to:        
+        - Network switch 
+        - Master-node
+        - Worker-node power-hub
+    
+------    
 
 Discover IP addresses for each worker node
 ------------------------------------------
@@ -85,6 +94,7 @@ Test first using the following which should flash the green LED across each node
 
         ./cluster_config.py -c 'sudo sh -c "echo 1 >/sys/class/leds/led0/brightness"' -m Y
     
+-----
 
 Update/Upgrade OS
 ^^^^^^^^^^^^^^^^^
@@ -99,6 +109,7 @@ Update/Upgrade OS
 
         ./cluster_config.py -c 'sudo shutdown -r now’
 
+-----
 
 update localizations
 ^^^^^^^^^^^^^^^^^^^^
@@ -116,7 +127,9 @@ Raspberry Pi boards usually ship with the UK localization so we’ll need to upd
         ./cluster_config -c 'sudo timedatectl set-timezone America/New_York'
 
         ./cluster_config.py -c ‘timedatectl'  # to confirm updates
-      
+
+-----
+
       
 Update locale settings
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -150,7 +163,8 @@ If not then generate as needed. In this case for en_US first uncomment it in the
     ./cluster_config.py -c 'sudo update-locale LANG=en_US.UTF-8'
     
     ./cluster_config.py -c 'locale'  # to confirm
-    
+ 
+-----
     
 Change passwords
 ^^^^^^^^^^^^^^^^
@@ -163,6 +177,7 @@ Change passwords
     
 Now update the passwords in the ``cluster_config.py`` script
 
+-----
 
 Change hostnames
 ^^^^^^^^^^^^^^^^
