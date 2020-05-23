@@ -2,30 +2,30 @@
 Raspberry Pi initial setup
 ==========================
 
-Unless purchased in a "product bundle" raspberry-pi arrive as a single-board-computer.  Nothing else.  Each board requires:
+Unless purchased as part of a "product bundle" each raspberry-pi arrives as a single-board-computer.  Nothing else.  Each board requires:
 
 * Micro SD card (class 10, UHS-1 for faster speed.  16gb or 32gb)
    
 * Power supply (see `here <https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md>`_ )
 
-Note that keyboard, mouse, HDMI cable, monitor are not listed here as the the raspberry Pi machines will mostly be operated "headless" which means access will be remote using Secure Shell (SSH) protocol or Virtual Network Computing (VNC).
+* Optional: keyboard, mouse, monitor.
 
 -----
 
-Flash Operating System to SD-card
----------------------------------
+Flash Operating System to the SD-card
+-------------------------------------
 
-Most of the time the "Rasbian" operating system which is based on the debian linux distribution and provided by the Raspberry Pi Foundation works fine.
+The "Rasbian" operating system which is based on the debian linux distribution and provided by the Raspberry Pi Foundation works fine for most purposes.
 
-The Raspberry Pi Foundation now `provides <https://www.raspberrypi.org/documentation/installation/installing-images/>`_ a utility for choosing the OS and then imaging directly to the SD-Card.
+The Raspberry Pi Foundation now `provides <https://www.raspberrypi.org/documentation/installation/installing-images/>`_ a utility for choosing the OS and then imaging directly to the SD-Card.  Alternatively for a little more control:
 
-Alternatively for a little more control:
+1) Download and save in a folder the latest Rasbian images from `here <https://www.raspberrypi.org/downloads/raspbian/>`_.  The full version includes a GUI for the OS and other software.  
 
-1) Download and save in a folder the latest Rasbian images from `here <https://www.raspberrypi.org/downloads/raspbian/>`_.  At least one raspi should have the full version which include the GUI the OS and other software.  Likely though the lite version which does not come a GUI nor other softare will suffice as we'll be accessing from the command line over ssh. 
+The lite version which does not come with a GUI nor other software will suffice when accessing the pi from the command line over ssh. 
     
 2) Flash the image onto an SD Card using `etcher <https://www.balena.io/etcher/>`_ for Mac OS. 
 
-3) In the boot partition I create an empty file to enable ssh
+3) In the boot partition create an empty file to enable ssh
 
 .. code-block:: bash
     
@@ -35,13 +35,13 @@ Alternatively for a little more control:
 
     touch ssh
     
-4) Enable connection to wifi by creating a ``wpa_supplicant.conf`` file in the same boot partition and input following information:
+4) Enable connection to wifi by creating a ``wpa_supplicant.conf`` file in the same boot partition: 
 
 .. code-block:: bash
     
     nano wpa_supplicant.conf
     
-and in the file:    
+and enter the following information:
 
 .. code-block:: bash
 
@@ -63,33 +63,33 @@ Additional OS configurations
 
 1) First we need to access and login to the raspi over wifi:
 
-   * Login into the router portal via (eg) ``http://192.168.1.1`` in order to find determine which the IP address the router has assigned to the new device that is now connected to the network. Could also use a network scanner via the mac. Then ssh into the pi:
+   * Login into the router portal (eg) ``http://192.168.1.1`` in order to determine which IP address the router has assigned to the new device that is now connected to the network. This can also be done using a network scanner. Then ssh into the pi:
    
    
-       .. code-block:: bash
-   
-           ssh pi@192.168.1.186
+    .. code-block:: bash
+
+        ssh pi@192.168.1.186
 
     
    * Alternatively, if the raspberry pi is the only one on the network (or at least the only one that is still has the default hostname ``raspberrypi`` then you can access more generically with:
  
-        .. code-block:: bash
-   
-            ssh pi@raspberrypi.local
+  .. code-block:: bash
+
+      ssh pi@raspberrypi.local
     
     
 Update the OS and other programs
 
-.. code-block::bash
+   .. code-block::bash
 
-    sudo apt-get update
-    sudo apt-get upgrade
+       sudo apt-get update
+       sudo apt-get upgrade
     
 2) Likely not needed any more but to be on the safe side expand the file-system to take advantage of the SD-card capacity:
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    sudo raspi-config --expand-rootfs
+       sudo raspi-config --expand-rootfs
     
     
 3) Update various configurations via command line via ``sudo raspi-config``:
