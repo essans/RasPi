@@ -284,7 +284,7 @@ In order to update/upgrade the OS on each worker node and make initial configura
 
 On the master-node create the ``~/code/python`` folder, and then create a ``cluster_config.py`` file and copy/paste code from here: https://github.com/essans/RasPi/blob/master/Clusters/configure_cluster.py
 
-Run a ``chmod u+x`` and then run:
+Update the IP addresses, passwords etc and run a ``chmod u+x`` to enable quick running from command line and and then run:
 
     .. code-block:: bash
 
@@ -333,6 +333,54 @@ Raspberry Pi boards usually ship with the UK localization so we’ll need to upd
         ./cluster_config -c 'sudo timedatectl set-timezone America/New_York'
 
         ./cluster_config.py -c ‘timedatectl'  # to confirm updates
+        
+**(4) Check/update locale settings.** 
+
+    .. code-block:: bash
+
+        ./cluster_config.py -c ‘locale'
+        
+If updates are needed then first check that the locale is available:
+
+.. code-block:: bash
+    
+    ./cluster_config.py -c ‘locale -a'
+    
+
+If not then generate as needed. In this case for en_US first uncomment it in the locale.gen file if necessary.
+
+.. code-block:: bash
+
+    ./cluster_config.py -c 'sudo sed -i "/en_US.UTF-8/s/^#[[:space:]]//g" /etc/locale.gen' -n 1
+
+    # removes ‘# ‘
+    # to recomment a line with a trailing space:
+    # sed -i '/<pattern>/s/^/# /g' file
+
+
+    ./cluster_config.py -c 'sudo locale-gen'
+    
+    ./cluster_config.py -c 'sudo update-locale LANG=en_US.UTF-8'
+    
+    ./cluster_config.py -c 'locale'  # to confirm
+    
+    
+**(5) Change passwords:**
+
+.. code-block:: bash
+
+    .cluster_config.py -c 'echo -e "raspberry\nNewPassword\nNewPassword" | passwd'
+    
+    # where NewPassword is the desired new password
+    
+Now update the passwords in the ``cluster_config.py`` script
+
+
+**(6) Change hostnames**
+
+Update ``hostname`` for each pi from the ``raspberrypi`` default to ``node-1``, ``node-2`` etc.  As each hostname will be different I need call the ``cluster_config.py`` script from a loop.
+
+
     
 
 
