@@ -62,7 +62,12 @@ This involves changes to various network configurations so it's a good idea to c
     
 **(4) Edit the dhcpcd configuration file**
 
-:command:`sudo nano /etc/dhcpcd.conf` and add:
+.. code-block:: bash
+
+   sudo nano /etc/dhcpcd.conf 
+   
+and add:
+
 
 .. code-block:: bash
 
@@ -100,9 +105,11 @@ This involves changes to various network configurations so it's a good idea to c
     
 **(6) Configure the DHCP server/masq configuration file** 
 
-``sudo nano /etc/dnsmasq.conf`` 
+.. code-block:: bash
 
-and by add:
+   sudo nano /etc/dnsmasq.conf 
+
+and add:
 
 .. code-block:: bash
 
@@ -122,7 +129,8 @@ There are many more options for dnsmasq. See `dnsmasq documentation <http://www.
 
 **(8) Configure the access point host software** 
 
-``sudo nano /etc/hostapd.conf`` 
+.. code-block:: bash
+   sudo nano /etc/hostapd.conf
 
 and add:
 
@@ -155,7 +163,9 @@ The commented out ``driver=nl80211`` would have been needed if using as stand-on
 
 **(9) Edit the following file:**
 
-``sudo nano /etc/default/hostapd`` 
+.. code-block:: bash
+      
+      sudo nano /etc/default/hostapd
 
 to indicate location of the config file:
 
@@ -180,7 +190,9 @@ and check status:
     
 **(11) Add routing and masquerade by first...**
 
-``sudo nano /etc/sysctl.conf`` 
+.. code-block:: bash
+
+   sudo nano /etc/sysctl.conf
 
 and uncomment/enable this list:
 
@@ -202,7 +214,9 @@ and save the iptables rule
     
 **(13) Edit the following file**
 
-``sudo nano /etc/rc.local`` 
+.. code-block:: bash
+
+   sudo nano /etc/rc.local 
 
 and add the following line just above the "exit 0" so that the these rules install on boot:
 
@@ -234,7 +248,9 @@ If SSH is enabled on the Raspberry Pi access point, it should be possible to con
 
 Create a file in order to create a linux bridge ``br0`` and add a physical interface ``eth0`` to the bridge:
 
-``sudo nano /etc/systemd/network/bridge-br0.netdev`` 
+.. code-block:: bash
+
+   sudo nano /etc/systemd/network/bridge-br0.netdev
 
 and add these lines:
 
@@ -247,7 +263,9 @@ and add these lines:
     
 **(16) Configure the bridge interface br0 and the slave interface etho using .network files as follows:**
 
-``sudo nano /etc/systemd/network/bridge-br0-slave.network`` 
+.. code-block:: bash
+   
+   sudo nano /etc/systemd/network/bridge-br0-slave.network
 
 and add:
 
@@ -259,7 +277,10 @@ and add:
     [Network]
     Bridge=br0
 
-``sudo nano /etc/systemd/network/bridge-br0.network`` 
+
+.. code-block:: bash
+
+   sudo nano /etc/systemd/network/bridge-br0.network
 
 and add:
 
@@ -275,7 +296,9 @@ and add:
 
 then restart service:
 
-``sudo systemctl restart systemd-networkd``
+.. code-block:: bash
+
+   sudo systemctl restart systemd-networkd
 
 Use ``brctl`` to verify that bridge ``br0`` has been created.  
 
