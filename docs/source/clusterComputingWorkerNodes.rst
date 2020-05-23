@@ -56,8 +56,8 @@ In order to update/upgrade the OS on each worker node and make initial configura
 
 ----
 
-Create script for managing nodes programmatically
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How to manage nodes programmatically
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 On the master-node create the ``~/code/python`` folder, and then create a ``cluster_config.py`` file and copy/paste code from here: https://github.com/essans/RasPi/blob/master/Clusters/configure_cluster.py
 
