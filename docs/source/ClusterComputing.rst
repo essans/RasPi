@@ -62,4 +62,28 @@ Operating system on master and worker nodes will be Raspbian/Debian flavour of l
 |          |                                                             |           |  $ 404  |
 +----------+-------------------------------------------------------------+-----------+---------+
 
+-----
+
+
+Set-up of Master Node
+^^^^^^^^^^^^^^^^^^^^^^
+
+**Install and configure operating system**
+
+(1) See: https://raspi-recipes.readthedocs.io/en/latest/initialSetup.html#
+
+(2) Install python (in case not already installed), along with the `fabric package <http://www.fabfile.org/>`_ that will be needed later.
+
+.. code-block:: bash
+
+    sudo apt install python3-pip
+
+    sudo pip3 install fabric
+
+-----
+
+**Configure Master Node as conduit for internet access for cluster**
+
+The Master Node will be the sole device on the cluster that connects to the internet. When worker nodes require internet access then they will connect via the Master Node (if allowed). The set-up here is based on what was learned when configuring another Raspberry Pi to provide service as a secondary `access point <https://raspi-recipes.readthedocs.io/en/latest/networking.html#create-wireless-access-point>`_ .
+
 
