@@ -1,11 +1,12 @@
+======================
 Set-up of Worker Nodes
-----------------------
+======================
 
 Connect and power-up everything.
 
 
 Discover IP addresses for each worker node
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------
 
 In setting-up the master-node it was assigned a static ip address ``192.168.5.1`` with subnet mask of ``255.255.255.0``.  This can be confirmed with ``ifconfig``
 
@@ -43,7 +44,7 @@ By convention we’ll assign node number from the top beginning with 1. Note the
 
 
 Configure each worker node
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 In order to update/upgrade the OS on each worker node and make initial configuration changes, I could take a number of approaches:
 
@@ -55,7 +56,8 @@ In order to update/upgrade the OS on each worker node and make initial configura
 
 ----
 
-**(1) Create script for managing nodes programmatically**
+Create script for managing nodes programmatically
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 On the master-node create the ``~/code/python`` folder, and then create a ``cluster_config.py`` file and copy/paste code from here: https://github.com/essans/RasPi/blob/master/Clusters/configure_cluster.py
 
@@ -84,6 +86,9 @@ Test first using the following which should flash the green LED across each node
         ./cluster_config.py -c 'sudo sh -c "echo 1 >/sys/class/leds/led0/brightness"' -m Y
     
 
+Update/Upgrade OS
+^^^^^^^^^^^^^^^^^
+
 **Run an update/upgrade across all worker nodes, and reboot**
 
     .. code-block::  bash
@@ -95,7 +100,10 @@ Test first using the following which should flash the green LED across each node
         ./cluster_config.py -c 'sudo shutdown -r now’
 
 
-**(3) Check/update localizations**
+update localizations
+^^^^^^^^^^^^^^^^^^^^
+
+**Check, then update**
 
     .. code-block:: bash
 
@@ -108,8 +116,12 @@ Raspberry Pi boards usually ship with the UK localization so we’ll need to upd
         ./cluster_config -c 'sudo timedatectl set-timezone America/New_York'
 
         ./cluster_config.py -c ‘timedatectl'  # to confirm updates
-        
-**(4) Check/update locale settings.** 
+      
+      
+Update locale settings
+^^^^^^^^^^^^^^^^^^^^^^
+  
+**Check, then update.** 
 
     .. code-block:: bash
 
@@ -140,7 +152,8 @@ If not then generate as needed. In this case for en_US first uncomment it in the
     ./cluster_config.py -c 'locale'  # to confirm
     
     
-**(5) Change passwords:**
+Change passwords
+^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
@@ -151,6 +164,8 @@ If not then generate as needed. In this case for en_US first uncomment it in the
 Now update the passwords in the ``cluster_config.py`` script
 
 
-**(6) Change hostnames**
+Change hostnames
+^^^^^^^^^^^^^^^^
 
 Update ``hostname`` for each pi from the ``raspberrypi`` default to ``node-1``, ``node-2`` etc.  As each hostname will be different I need call the ``cluster_config.py`` script from a loop.
+
