@@ -125,6 +125,9 @@ Now reboot the master node.   To list the rules in iptables:
     
 -----
 
+Overview
+^^^^^^^^
+
 The following diagram illustrates how *masuerading* and network address translation will work once all nodes are set-up:
 
 .. image:: images/raspi_cluster_nat.png
