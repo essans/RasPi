@@ -3,9 +3,6 @@ Networking
 ==========
 
 
-.. role:: bash(code)
-   :language: bash
-
 Create wireless access point
 ----------------------------
 
