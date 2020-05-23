@@ -36,6 +36,7 @@ a collection of recipes for the Raspberry Pi
 .. toctree::
    :caption: Cluster Computing
    :maxdepth: 3
+   :hidden:
 
    clusterComputingOverview
    clusterComputingMasterNode
