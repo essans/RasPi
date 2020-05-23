@@ -81,6 +81,11 @@ Install and configure operating system
         sudo apt install python3-pip
 
         sudo pip3 install fabric
+        
+(3) Install other tools that we'l need
+
+    .. code-block:: bash
+        sudo apt install tcpdump
 
 
 ------
@@ -97,6 +102,8 @@ The Master Node will be the sole device on the cluster that connects to the inte
         sudo apt-get install dnsmasq
 
         sudo systemctl stop dnsmasq
+        
+*ref: https://en.wikipedia.org/wiki/Dnsmasq*
 
 **(2) Edit the DHCP client daemon configuration file**
 
@@ -118,7 +125,7 @@ Save, exit, and then restart the service:
         sudo service dhcpcd restart
         
 
-**(3) Control assignment of IP addresses to the worker nodes:
+**(3) Control assignment of IP addresses to the worker nodes:**
 
     .. code-block:: bash
 
@@ -137,7 +144,7 @@ save, exit and then restart the service:
 
         sudo systemctl start dnsmasq
         
-**(4) Enable IP forwarding.
+**(4) Enable IP forwarding:**
 
     .. code-block:: bash
 
@@ -148,7 +155,8 @@ uncomment/enable this line:
     .. code-block:: bash
         net.ipv4.ip_forward=1
         
-**(5) Now I need to update iptables to configure the ip packet filter rules in order to allow all worker nodes to essentially use the IP address of the master node when connecting to the internet. This is known as *masquerading* and the firewall keeps track of the incoming and outgoing connections (ie how to directly traffic to/from the relevant node) using Network Address Translation (NAT). Essentially by keeping tracking of ports and MAC addresses.
+**(5) Now I need to update iptables to configure the ip packet filter rules** 
+This is needed in order to allow all worker nodes to essentially use the IP address of the master node when connecting to the internet. This is known as *masquerading* and the firewall keeps track of the incoming and outgoing connections (ie how to directly traffic to/from the relevant node) using Network Address Translation (NAT). Essentially by keeping tracking of ports and MAC addresses.
 
     .. code-block:: bash
 
@@ -182,6 +190,37 @@ Now reboot the master node.   To list the rules in iptables:
     
 -----
 
+The following diagram illustrates how *masuerading* and network address translation will work once all nodes are set-up:
+
+.. image:: images/raspi_cluster_nat.png
+    :align: center
+    :alt: clusterInternetAccess
+
+
+The way it works is as follows:
+
+(1) When the worker nodes 1-5 come on line they will request an IP address the `DHCP <https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol#Discovery>`_ server running on the master node.  Either a new one, or the previously assigned one if available.  At this point the IP address for each note is mapped to its corresponding MAC address.
+
+(2) If node 2 seeks to connect to the internet (eg via a ping request sent via TCP on port 22) then that will travel to the master node.  The master node using the DNS Masquerading will mask node2's IP address with it's own which will then travel to the router before itself betting masked with the router's public IP address.
+
+At each step of the way mappings and tables are maintained so that when a response is received from the internet it knows how to find its way back to node2 which sits in an isolated part of the network.
+
+.. image:: images/raspi_cluster_node2_ping.png
+    :align: center
+    :alt: clusterInternetAccess
+
+Node 2 can communicate outside of the cluster but nothing outside the isolated network can communicate in.
+
+This can be seen in action using ``tcpdump``
+
+    .. code-block:: bash
+
+        sudo tcpdump -i eth0 -en
+    
+
+The master node is now ready.  It might make sense to `back-up <https://medium.com/@ccarnino/backup-raspberry-pi-sd-card-on-macos-the-2019-simple-way-to-clone-1517af972ca5>`_.
+
+    
     
     
     
