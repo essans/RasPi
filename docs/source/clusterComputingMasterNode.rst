@@ -1,10 +1,12 @@
+=====================
 Set-up of Master Node
----------------------
+=====================
+
 This is the Raspberry pi which will control and manage the set of worker nodes.  
 
 
 Install and configure operating system
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------
 
 (1) See: https://raspi-recipes.readthedocs.io/en/latest/initialSetup.html#
 
@@ -26,7 +28,7 @@ Install and configure operating system
 ------
 
 Configure internet access for cluster
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 
 The Master Node will be the sole device on the cluster that connects to the internet. When worker nodes require internet access then they will connect via the Master Node (if allowed). The set-up here is based on what was learned when configuring another Raspberry Pi to provide service as a secondary `access point <https://raspi-recipes.readthedocs.io/en/latest/networking.html#create-wireless-access-point>`_ .
 
