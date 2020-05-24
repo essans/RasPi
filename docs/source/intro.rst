@@ -1,5 +1,7 @@
-What is this?
--------------
+============
+Introduction
+============
+
 This is the documentation for a collection of recipes, code and hacks for the raspberry pi.
 
 
