@@ -50,13 +50,12 @@ a collection of recipes for the Raspberry Pi
    clusterComputingWorkerNodes
    configClusterScript
    
+|
+|
 
 .. toctree::
    :maxdepth: 2
    :hidden:
-
-|
-|
 
    readthedocs
      
