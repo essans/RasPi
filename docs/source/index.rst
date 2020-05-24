@@ -14,17 +14,20 @@ a collection of recipes for the Raspberry Pi
     :alt: raspberry_4_diagram
 
 
+.. toctree::
+   :maxdepth: 2
+   :hidden:
 
+   intro
+   
 
 .. toctree::
-   :caption: Set-up, Configuration
+   :caption: Set-up & Basic Configuration
    :maxdepth: 3
    :hidden:
    :numbered:
 
-   intro
    initialSetup
-   readthedocs
    
 .. toctree::
    :caption: Networking
@@ -45,4 +48,11 @@ a collection of recipes for the Raspberry Pi
    clusterComputingMasterNode
    clusterComputingWorkerNodes
    configClusterScript
+   
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   
+   readthedocs
      
