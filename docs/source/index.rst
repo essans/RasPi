@@ -20,6 +20,7 @@ a collection of recipes for the Raspberry Pi
    :caption: Set-up, Configuration
    :maxdepth: 3
    :hidden:
+   :numbered:
 
    intro
    initialSetup
@@ -29,6 +30,7 @@ a collection of recipes for the Raspberry Pi
    :caption: Networking
    :maxdepth: 3
    :hidden:
+   :numbered:
 
    accessPoint
    
@@ -37,6 +39,7 @@ a collection of recipes for the Raspberry Pi
    :caption: Cluster Computing
    :maxdepth: 3
    :hidden:
+   :numbered:
 
    clusterComputingOverview
    clusterComputingMasterNode
