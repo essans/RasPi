@@ -15,6 +15,7 @@ a collection of recipes for the Raspberry Pi
 
 
 .. toctree::
+   :caption: Introduction
    :maxdepth: 2
    :hidden:
 
@@ -53,6 +54,9 @@ a collection of recipes for the Raspberry Pi
 .. toctree::
    :maxdepth: 2
    :hidden:
-   
+
+|
+|
+
    readthedocs
      
