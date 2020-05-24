@@ -29,6 +29,7 @@ a collection of recipes for the Raspberry Pi
    :numbered:
 
    initialSetup
+   readthedocs
    
 .. toctree::
    :caption: Networking
@@ -50,12 +51,5 @@ a collection of recipes for the Raspberry Pi
    clusterComputingWorkerNodes
    configClusterScript
    
-|
-|
 
-.. toctree::
-   :maxdepth: 2
-   :hidden:
-
-   readthedocs
      
