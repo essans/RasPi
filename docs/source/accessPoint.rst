@@ -60,12 +60,11 @@ This involves changes to various network configurations so it's a good idea to c
 .. code-block:: bash
 
    sudo nano /etc/dhcpcd.conf 
-   
+
+
 and add:
 
-
 .. code-block:: bash
-    :caption: And add
 
     # These first 2 lines were added later after lots of trial and error... 
     # Both are needed to ensure that the bridge works correctly.
