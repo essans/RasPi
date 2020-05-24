@@ -41,4 +41,5 @@ a collection of recipes for the Raspberry Pi
    clusterComputingOverview
    clusterComputingMasterNode
    clusterComputingWorkerNodes
+   configClusterScript
      
