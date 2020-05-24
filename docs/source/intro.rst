@@ -1,11 +1,11 @@
-Introduction
-============
+What is this?
+-------------
 This is the documentation for a collection of recipes, code and hacks for the raspberry pi.
 
 
-Objectives
-----------
-Use the relatively inexpensive Raspberry Pi Single Board Computer (SCB) as the basis for reinforcing an understanding of vaarious topics relating to computer architechure, networking, security, physical computing, programming, and related topics.
+What are the objectives
+-----------------------
+Show how the relatively inexpensive Raspberry Pi Single Board Computer (SCB) can be used to learn and/or reinforce understanding of a wide range of topics relating to computer architechure, networking, security, physical computing, programming, and related topics.
 
 
 Why the Raspberry Pi?
