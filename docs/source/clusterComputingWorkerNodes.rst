@@ -182,5 +182,25 @@ Now update the passwords in the ``cluster_config.py`` script
 Change hostnames
 ^^^^^^^^^^^^^^^^
 
-Update ``hostname`` for each pi from the ``raspberrypi`` default to ``node-1``, ``node-2`` etc.  As each hostname will be different I need call the ``cluster_config.py`` script from a loop.
+Update ``hostname`` for each pi from the ``raspberrypi`` default to ``node1``, ``node2`` etc.  I could do these one at a time on each node via ``raspi-config`` or by updating these files:
+
+``
+/etc/hosts
+/etc/hostname
+``
+
+..but instead I'll attempt this is one shot across all worker nodes remotely.
+
+First I'll confirm the hostname of each node:
+
+.. code-block:: bash
+
+        .cluster_config.py -c 'hostname -s'
+        
+These should all come back as ``raspberrypi``.  In the above mentioned files I need to replace ``raspberrypi`` with ``node1``, ``node2`` etc.
+
+
+
+
+
 
