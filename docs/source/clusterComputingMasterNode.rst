@@ -23,6 +23,7 @@ Install and configure operating system
     .. code-block:: bash
         sudo apt install tcpdump
         sudo apt install nmap
+        sudo apt install sshpass
 
 
 ------
