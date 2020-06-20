@@ -1,3 +1,5 @@
+### Things to remember when using cluster_config.py
+
 
 Chaining commands:
 
