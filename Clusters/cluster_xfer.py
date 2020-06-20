@@ -79,7 +79,7 @@ for node,host in enumerate(hosts):
 
 	try:
 
-		xfer_cmd = 'sshpass -p ' + password + ' scp ' + args.f + ' ' + user + '@' + host + ':' + args.f
+		xfer_cmd = 'sshpass -p ' + password + ' scp ' + args.f + ' ' + user + '@' + host + ':' + args.d
 
 		subprocess.call(xfer_cmd, shell=True)
 
