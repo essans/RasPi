@@ -50,6 +50,4 @@ a collection of recipes for the Raspberry Pi
    clusterComputingMasterNode
    clusterComputingWorkerNodes
    clusterComputingOtherConfigs
-   
-
-     
+   clusterConfigScript
