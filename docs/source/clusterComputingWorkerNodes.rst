@@ -209,6 +209,8 @@ These should all come back as ``raspberrypi``.  In the above mentioned files I n
         sed -i 's/raspberrypi/node5/g' /etc/hosts
 
         # and then repeat for /etc/hostname
+        
+<br>
 
 It's more interesting though to consider a "wrapper" script that calls ``./cluster_config.py`` in a loop:
 
@@ -235,7 +237,7 @@ It's more interesting though to consider a "wrapper" script that calls ``./clust
                 
 Above script is saved as ``cluster_commands.py`` and then run from the command line.  Then re-rerun after updating with ``/etc/hostname``.
 
-Once successfully run reboot the worker nodes with ``./cluster_config.py -c 'sudo shutdown -r now’`` and then confirm that the hostnames as done earlier.
+Once successfully run reboot the worker nodes with ``./cluster_config.py -c 'sudo shutdown -r now’`` and confirm across the nodes that the hostnames have been updated.
 
 
 
