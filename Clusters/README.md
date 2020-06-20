@@ -11,7 +11,7 @@ Chaining commands:
 ```
 ./cluster_config.py -c 'cd code && sudo mkdir python'
 
-./cluster_config.py -c 'sudo chmod -R 0750 code'
+./cluster_config.py -c 'sudo chmod -R 0777 code'   #full permissions
 
 
 ```
