@@ -184,10 +184,11 @@ Change hostnames
 
 Update ``hostname`` for each pi from the ``raspberrypi`` default to ``node1``, ``node2`` etc.  I could do these one at a time on each node via ``raspi-config`` or by updating these files:
 
-``
-/etc/hosts
-/etc/hostname
-``
+.. code-block:: bash
+
+        /etc/hosts
+        /etc/hostname
+
 
 ..but instead I'll attempt this is one shot across all worker nodes remotely.
 
@@ -197,9 +198,44 @@ First I'll confirm the hostname of each node:
 
         .cluster_config.py -c 'hostname -s'
         
-These should all come back as ``raspberrypi``.  In the above mentioned files I need to replace ``raspberrypi`` with ``node1``, ``node2`` etc.
+These should all come back as ``raspberrypi``.  In the above mentioned files I need to replace ``raspberrypi`` with ``node1``, ``node2`` etc.  This could be done one at a time by passing the following to ``./cluster_config.py``:
+
+.. code-block:: bash
+
+        sed -i 's/raspberrypi/node1/g' /etc/hosts   #s to replace, /g global
+        sed -i 's/raspberrypi/node2/g' /etc/hosts
+        sed -i 's/raspberrypi/node3/g' /etc/hosts
+        sed -i 's/raspberrypi/node4/g' /etc/hosts
+        sed -i 's/raspberrypi/node5/g' /etc/hosts
+
+        # and then repeat for /etc/hostname
+
+It's more interesting though to consider a "wrapper" script that calls ``./cluster_config.py`` in a loop:
+
+.. code-block:: python
+
+        #!/usr/bin/env python3
+
+        import sys
+        import subprocess
 
 
+        cmds_to_execute =   {1:"'sudo sed -i \"s/raspberrypi/node1/g\" /etc/hosts'",   
+                             2:"'sudo sed -i \"s/raspberrypi/node2/g\" /etc/hosts'",
+                             3:"'sudo sed -i \"s/raspberrypi/node3/g\" /etc/hosts'",
+                             4:"'sudo sed -i \"s/raspberrypi/node4/g\" /etc/hosts'",
+                             5:"'sudo sed -i \"s/raspberrypi/node5/g\" /etc/hosts'"
+                            }
+
+        for node,command in cmds_to_execute.items():
+
+                cmd_to_send = "./cluster_config.py -c " + command + " -n " +str(node)
+
+                subprocess.call(cmd_to_send, shell = True)  
+                
+Above script is saved as ``cluster_commands.py`` and then run from the command line.  Then re-rerun after updating with ``/etc/hostname``.
+
+Once successfully run reboot the worker nodes with ``./cluster_config.py -c 'sudo shutdown -r now’`` and then confirm that the hostnames as done earlier.
 
 
 
