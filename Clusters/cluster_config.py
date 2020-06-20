@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+#Execute commands from master node across 1 or all worker nodes, with option to also run on master.
+
+#This version uses passwords only so assumes cluster is sufficiently isolated/secure on network.
+
 import sys
 import argparse
 
