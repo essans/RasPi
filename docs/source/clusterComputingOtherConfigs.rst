@@ -11,6 +11,8 @@ As all nodes on the cluster will be accessed remotely and then shutdown remotely
 This blog from Jeff Geerling shows how:
 https://www.jeffgeerling.com/blogs/jeff-geerling/controlling-pwr-act-leds-raspberry-pi
 
+---
+
 Execute across cluster:
 
 .. code-block:: bash
