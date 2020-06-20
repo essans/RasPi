@@ -177,7 +177,7 @@ Change passwords
     
 Now update the passwords in the ``cluster_config.py`` script
 
------
+------
 
 Change hostnames
 ^^^^^^^^^^^^^^^^
@@ -238,6 +238,53 @@ Above script is saved as ``cluster_commands.py`` and then run from the command l
 
 Once successfully run reboot the worker nodes with ``./cluster_config.py -c 'sudo shutdown -r now’`` and confirm across the nodes that the hostnames have been updated.
 
+------
 
+
+Add all hostnames to each node
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ``/etc/hosts`` file needs to be further updated with ip addresses and hostnames for all machines that form the cluster.  
+
+(1) First create and save a text file called ``node`` with the list of IP addresses and corresponding node IDs:
+
+.. code-block:: bash
+
+        192.168.5.1    node0
+        192.168.5.41   node1
+        192.168.5.42   node2
+        192.168.5.19   node3
+        192.168.5.8    node4
+        192.168.5.9    node5
+        
+(2) Copy this file to the other nodes:
+
+The following script ``cluster_xfer.py`` accept arguments as described in the help and calls linux scp via a loop:
+
+https://github.com/essans/RasPi/blob/master/Clusters/cluster_xfer.py
+
+But first create the required directories on each node:
+
+.. code-block:: python
+     
+        ./cluster_config.py -c 'mkdir code'       
+        ./cluster_config.py -c 'cd code && sudo mkdir python'
+
+        ./cluster_config.py -c 'sudo chmod -R 0777 code'   #full permissions
+
+Then copy the file across to each node, and then append the ``node`` file information to the ``/etc/hosts`` file:
+
+.. code-block:: python
+
+        ./cluster_xfer -f nodes -d '/home/pi/python'  #code node file to all nodes
+        
+        cat nodes | sudo tee -a /etc/hosts  #update /etc/hosts file on master node
+
+        ./cluster_config.py -c 'cd code/python && cat nodes | sudo tee -a /etc/hosts'  #same on worker nodes
+        
+        
+Then reboot everything
+
+Now each node has the information required to reach other nodes.  From any node (eg master) you can now ssh into another one (eg 2) with ``ssh pi@node2``.
 
 
