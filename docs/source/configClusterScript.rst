@@ -1,4 +1,4 @@
-.. literalinclude:: https://github.com/essans/RasPi/blob/master/Clusters/configure_cluster.py
+.. literalinclude:: https://github.com/essans/RasPi/blob/master/Clusters/cluster_config.py
    :language: python
    
 test   
