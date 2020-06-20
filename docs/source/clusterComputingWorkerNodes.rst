@@ -61,7 +61,7 @@ In order to update/upgrade the OS on each worker node and make initial configura
 
 (b) Make all changes on one of the nodes and then clone the card for each of the other 4 nodes. Again a manageable task for 1+4 nodes, but what if I had 1+49 ? What if the worker nodes are not in the same physical location?
 
-(c) The approach I take is via the fabric python package which allows programatic scheduling and running of shell commands over ssh. I can write some code that stores the IP addresses, user names, passwords etc for each node; loop across each of these node while passing the desired command lines we want to run.
+(c) The approach I take is via the fabric python package which allows programatic scheduling and running of shell commands over ssh. I can write some code that stores the IP addresses, user names, passwords etc for each node; loop across each of these node while passing the desired command lines we want to run.  More information on the fabric python package can be found here: https://www.fabfile.org and here: https://docs.fabfile.org/en/2.5/
 
 ----
 
