@@ -68,7 +68,7 @@ In order to update/upgrade the OS on each worker node and make initial configura
 How to manage nodes programmatically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-On the master-node create the ``~/code/python`` folder, and then create a ``cluster_config.py`` file and copy/paste code from here: https://github.com/essans/RasPi/blob/master/Clusters/configure_cluster.py
+On the master-node create the ``~/code/python`` folder, and then create a ``cluster_config.py`` file and copy/paste code from here: https://github.com/essans/RasPi/blob/master/Clusters/cluster_config.py
 
 Update the IP addresses, passwords etc and run a ``chmod u+x`` to enable quick running from command line and and then run:
 
@@ -210,7 +210,6 @@ These should all come back as ``raspberrypi``.  In the above mentioned files I n
 
         # and then repeat for /etc/hostname
         
-<br>
 
 It's more interesting though to consider a "wrapper" script that calls ``./cluster_config.py`` in a loop:
 
