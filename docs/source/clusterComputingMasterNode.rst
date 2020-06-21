@@ -143,8 +143,7 @@ The way it works is as follows:
 
 (1) When the worker nodes 1-5 come on line they will request an IP address from the `DHCP <https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol#Discovery>`_ server running on the master node.  This will either be a new one, or the previously assigned one if available.  At this point the IP address for each node is mapped to its corresponding MAC address.
 
-|
-(2) If node 2 seeks to connect to the internet (eg via a ping request sent via TCP on port 22) then that will travel to the master node.  The master node using the DNS Masquerading will mask node2's IP address with it's own which will then travel to the router before itself betting masked with the router's public IP address.
+|(2) If node 2 seeks to connect to the internet (eg via a ping request sent via TCP on port 22) then that will travel to the master node.  The master node using the DNS Masquerading will mask node2's IP address with it's own which will then travel to the router before itself betting masked with the router's public IP address.
 
 At each step of the way mappings and tables are maintained so that when a response is received from the internet it knows how to find its way back to node2 which sits in an isolated part of the network.
 
