@@ -16,7 +16,7 @@ The architecture for this first cluster will comprise of 5 Raspberry Pi 3 Model 
 
 The master node will connect to the internet via wireless LAN and using "IP Masquerading" will provide gateway access to the internet for the worker nodes only when needed.
 
-Operating system on master and worker nodes will be Raspbian/Debian flavour of linux.
+Operating system on master and worker nodes will be Raspberry Pi OS flavor of the Debian distribution linux.
 
 -----
 
