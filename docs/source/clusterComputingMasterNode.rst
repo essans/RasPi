@@ -1,3 +1,5 @@
+.. include:: global.rst
+
 =====================
 Set-up of Master Node
 =====================
