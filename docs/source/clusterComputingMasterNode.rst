@@ -134,7 +134,7 @@ Now reboot the master node.   To list the rules in iptables:
 Overview
 ^^^^^^^^
 
-The following diagram illustrates how *masuerading* and network address translation will work once all nodes are set-up:
+The following diagram illustrates how *masquerading* and network address translation will work once all nodes are set-up:
 
 .. image:: images/raspi_cluster_nat.png
     :align: center
@@ -164,7 +164,48 @@ This can be seen in action using ``tcpdump``
     .. code-block:: bash
 
         sudo tcpdump -i eth0 -en
+   
+-----
+
+Manage Internet Gateway
+^^^^^^^^^^^^^^^^^^^^^^^
+Much of the time access to the internet wont be required and hence the internet gateway can be disabled and then re-enabled whenever needed.
+
+First locate the gateway while logged into the master node
+
+    .. code-block:: bash
     
+        sudo /sbin/route -n
+        
+The gateway will have a destination of 0.0.0.0 (or default if -n tail not used.  To disable 192.168.1.1 gateway:
+
+    .. code-block:: bash
+    
+        sudo /sbin/route del default gw 192.168.1.1
+        
+...and to add it back:
+
+    .. code-block:: bash
+    
+        sudo /sbin/route add default gw 192.168.1.1
+
+
+A handy script found `here <https://superuser.com/questions/710954/linux-command-line-quick-way-to-disable-internet-keeping-lan>`_ enables this to be automated:
+
+    .. code-block:: bash
+    
+        GW="$(sudo /sbin/route -n | awk '$1=="0.0.0.0" {print $2; exit}')"
+        sudo /sbin/route del default gw "$GW"
+        echo "$GW" >~/my_tmp_file
+
+the gateway is saved in a temp file enabling it to be re-enabled via a script
+
+    .. code-block:: bash
+    
+        sudo /sbin/route add default gw "$(cat ~/my_tmp_file)"
+
+
+---
 
 The master node is now ready.  It might make sense to `back-up <https://medium.com/@ccarnino/backup-raspberry-pi-sd-card-on-macos-the-2019-simple-way-to-clone-1517af972ca5>`_.
 
