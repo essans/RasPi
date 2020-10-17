@@ -128,6 +128,14 @@ Now reboot the master node.   To list the rules in iptables:
 .. code-block:: bash
 
         sudo iptables -t nat -L
+        
+
+To view connected devices:
+
+.. code-block:: bash
+
+        arp -n
+
     
 -----
 
