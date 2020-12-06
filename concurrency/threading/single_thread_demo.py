@@ -52,6 +52,9 @@ if __name__ == "__main__":
     x.start()
     log(str(x))
     time.sleep(1)
+    
+    #log("Main | wait for the thread(s) to finish"
+    #x.join()
 
     time.sleep(2)
     
