@@ -25,39 +25,45 @@ def log(message,console='y'):
 
 
 def thread_function(name):
-    log("Thread {} fucntion starting".format(name))
+    log("Thread {} fucntion starting\n".format(name))
 
-    time.sleep(2)
+    time.sleep(3)
 
-    log("Thread {} function running...".format(name))
+    log("Thread {} function running...\n".format(name))
 
-    time.sleep(2)
+    time.sleep(3)
 
-    log("Thread {} function finishing".format(name))
+    log("Thread {} function finishing\n".format(name))
 
 
 
 if __name__ == "__main__":
 
-    log("start")
-    time.sleep(1)
+    log("start\n")
+    time.sleep(2)
 
-    log("Main | running & before creating thread")
-    time.sleep(1)    
+    log("Main | running & before creating thread\n")
+    time.sleep(5)    
 
     x = threading.Thread(target=thread_function, args=(1,),daemon=None)
     log(str(x))    
 
-    log("Main | before running thread(s)")
+    time.sleep(3)
+    
+    log("Main | before running thread(s)\n")
+    
+    time.sleep(5)
+    
     x.start()
     log(str(x))
-    time.sleep(1)
     
-    #log("Main | wait for the thread(s) to finish"
+    time.sleep(2)
+    
+    #log("Main | wait for the thread(s) to finish\n"
     #x.join()
 
     time.sleep(2)
+       
+    log("Main | continues to run\n")
     
-    log("Main | continues to run")
-    
-    log("Main | all done")
+    log("Main | all done\n")
