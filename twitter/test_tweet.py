@@ -6,15 +6,15 @@ import subprocess
 from twython import Twython
 
 from auth import(
-	API_key,
-	API_secret_key,
+	api_key,
+	api_secret_key,
 	access_token,
 	access_token_secret
 )
 
 twitter = Twython(
-	API_key,
-	API_secret_key,
+	api_key,
+	api_secret_key,
 	access_token,
 	access_token_secret
 )
