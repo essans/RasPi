@@ -62,7 +62,7 @@ if __name__ == "__main__":
     log(str(y))
     time.sleep(2)
     
-    
+    #comment out next 3 lines to enable main to continue without waiting
     #log("Main | wait for the thread(s) to finish\n"
     #x.join()
     #y.join()
