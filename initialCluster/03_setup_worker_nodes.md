@@ -56,7 +56,8 @@ I need to upate/upgrade the OS on each node and make initial configuration chang
 
 <br>
 
-(1) On master-node create the ```~/code/python``` folder, then create a ```cluster_config.py``` file and copy/paste code from [here](https://github.com/essans/RasPi/blob/master/cluster/configure_cluster.py).  Run a ```chmod u+x``` and then:
+(1) On master-node create the ```~/code/python``` folder, then create a ```cluster_config.py``` file and copy/paste code from [here](https://github.com/essans/RasPi/blob/master/Cluster/cluster_config.py).  Run a ```chmod u+x``` and then:
+
 
 ```sh
 ./cluster_config.py --help
