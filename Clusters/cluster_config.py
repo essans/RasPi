@@ -60,7 +60,7 @@ m_password = ''
 if args.m in ['Y','y']:
 
 	if args.v in ['Y','y']:
-		print('\n >>> ATTEMPTING MASTER \n')
+		print('\n >>> ATTEMPTING MASTER...')
 
 	try:
 		c = Connection(master,user=user,connect_kwargs={"password": m_password})
@@ -73,7 +73,7 @@ if args.m in ['Y','y']:
 if args.n !=99:
 
 	if args.v in ['Y','y']:
-                print('\n >>> ATTEMPTING NODE: '+str(args.n)+'\n')
+                print('\n >>> ATTEMPTING NODE: '+str(args.n)+'...')
 
 	try:
 		c = Connection(hosts[args.n-1],user=user,connect_kwargs={"password": password})
@@ -89,7 +89,7 @@ if args.n !=99:
 for node,host in enumerate(hosts):
 
 	if args.v in ['Y','y']:
-                print('\n >>> ATTEMPTING NODE: '+str(node+1)+'\n')
+                print('\n >>> ATTEMPTING NODE: '+str(node+1)+'...')
 
 	try:
 		c = Connection(host,user=user,connect_kwargs={"password": password})
