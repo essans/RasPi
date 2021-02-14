@@ -99,7 +99,7 @@ and then reboot:
 ./cluster_config.py -c 'sudo shutdown -r now’
 ```
 
-(2) Check and update localization for each worker node (also confirm that 'System clock synchronized' is set to 'yes':
+(2) Check and update localization for each worker node (also confirm that ```System clock synchronized``` is set to ```yes```:
 
 ```
 ./cluster_config.py -c ‘timedatectl'
