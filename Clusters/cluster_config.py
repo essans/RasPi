@@ -22,7 +22,7 @@ parser.add_argument('-o',
         required=False,
         type=str,
         default='Y',
-        help="hide output (default: Y)")
+        help="show output (default: Y)")
 
 
 parser.add_argument('-c',
