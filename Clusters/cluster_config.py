@@ -15,7 +15,15 @@ parser.add_argument('-v',
         required=False,
         type=str,
         default='Y',
-        help="Verbose (default: Y)")
+        help="verbose (default: Y)")
+
+
+parser.add_argument('-o',
+        required=False,
+        type=str,
+        default='Y',
+        help="hide output (default: Y)")
+
 
 parser.add_argument('-c',
 	required=False,
@@ -56,6 +64,12 @@ password = ''
 
 m_password = ''
 
+if args.o in ['Y','y']:
+	args.o = False
+
+else:
+	args.o = True
+
 
 if args.m in ['Y','y']:
 
@@ -64,7 +78,7 @@ if args.m in ['Y','y']:
 
 	try:
 		c = Connection(master,user=user,connect_kwargs={"password": m_password})
-		result = c.run(args.c)
+		result = c.run(args.c,hide=args.o)
 
 	except:
 		print('Problem with master node \n')
@@ -77,7 +91,7 @@ if args.n !=99:
 
 	try:
 		c = Connection(hosts[args.n-1],user=user,connect_kwargs={"password": password})
-		result = c.run(args.c)
+		result = c.run(args.c,hide=args.o)
 
 	except:
 		print("Problem with node "+str(args.n)+'\n')
@@ -94,7 +108,7 @@ for node,host in enumerate(hosts):
 	try:
 		c = Connection(host,user=user,connect_kwargs={"password": password})
 
-		result = c.run(args.c)
+		result = c.run(args.c,hide=args.o)
 
 	except:
 		print("Problem with node "+str(node+1)+'\n')
