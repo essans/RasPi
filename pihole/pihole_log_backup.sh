@@ -6,7 +6,7 @@ date_log=$(stat -c '%y' /var/log/pihole.log.2.gz | cut -d ' ' -f1 | sed -e 's/-/
 
 date_delta=1
 
-date_yest=$(date --date="${date_log} -${date_delta} day" +%Y-%m-%d)
+date_yest=$(date --date="${date_log} -${date_delta} day" +%Y%my%d)
 
 filename="pihole.log.${date_yest}.gz"
 
