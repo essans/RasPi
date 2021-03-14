@@ -64,11 +64,11 @@ hosts = [
 
 master = '192.168.5.1'
 
-user   = 'pi'
+user   = ''
 
-password = 'raspi2020'
+password = ''
 
-m_password = 'raspi2020'
+m_password = ''
 
 script = '~/code/python/cluster_config.py -v Y -o Y'
 
