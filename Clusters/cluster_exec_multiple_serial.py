@@ -14,6 +14,6 @@ cmds_to_execute =   {1:"'sudo sed -i \"s/raspberrypi/node1/g\" /etc/hostname'",
 
 for node,command in cmds_to_execute.items():
 
-        cmd_to_send = "./cluster_config.py -c " + command + " -n " +str(node)
+        cmd_to_send = "./cluster_exec_serial.py -c " + command + " -n " +str(node)
 
         subprocess.call(cmd_to_send, shell = True)
