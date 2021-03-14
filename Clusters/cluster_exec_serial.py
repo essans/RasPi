@@ -75,7 +75,7 @@ def get_args():
 
 
 
-def exec_across_nodes(args, Connection):
+def exec_across_nodes(args):
 
 	for node,node_ip in cluster.nodes.items():
 
@@ -103,7 +103,7 @@ def exec_across_nodes(args, Connection):
 
 def main():
 	args = get_args()
-	exec_across_nodes(args, Connection)
+	exec_across_nodes(args)
 
 
 if __name__ == '__main__':
