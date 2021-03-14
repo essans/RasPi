@@ -68,9 +68,9 @@ In order to update/upgrade the OS on each worker node and make various configura
 Manage worker nodes programmatically using fabric python package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-On the master-node create the ``~/code/python`` folder, and then create a ``cluster_config.py`` file and copy/paste code from here: https://github.com/essans/RasPi/blob/master/Clusters/cluster_config.py
+On the master-node create the ``~/code/python`` folder, and then create a ``cluster_exec_serial.py`` file and copy/paste code from here: https://github.com/essans/RasPi/blob/master/Clusters/cluster_exec_serial.py
 
-Update the IP addresses, passwords etc in the ``cluster_config.py`` file and run a ``chmod u+x`` to enable quick running from command line and and then run:
+Create a ``myconfigs.py`` file in the same folder and copy the configs from here: https://github.com/essans/RasPi/blob/master/Clusters/myconfigs.py and update the IP addresses, passwords etc.  Then run a ``chmod u+x`` to enable quick running from command line and and then run:
 
 .. code-block:: bash
 
