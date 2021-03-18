@@ -2,23 +2,23 @@
 
 #Execute commands from master node across 1 or all worker nodes, with option to also run on master.
 
-# ./cluster_exec_serial --help  <--- see all options
+# ./cluster_serial_exec --help  <--- see all options
 
-# ./cluster_exec_serial -c 'hostname -I', -m Y    <- execute 'hostname -I' across all nodes incl. Master
+# ./cluster_serial_exec -c 'hostname -I', -m    <- execute 'hostname -I' across all nodes incl. Master
 
-# ./cluster_exec_serial -c 'hostname -I', -n 0 1 5 <- execute across nodes 0 (master), 1 and 5 only
+# ./cluster_serial_exec -c 'hostname -I', -n 0 1 5 <- execute across nodes 0 (master), 1 and 5 only
 
+# ./cluster_serial_exec -c 'hostname -I', -p <- use passwords instead of sshkeys 
+
+# need to add logging
 
 ###################################
 
 
 #!/usr/bin/env python3
 
-import sys
 import argparse
-
 from myconfigs import cluster1 as cluster
-
 from fabric import Connection
 
 
@@ -26,34 +26,36 @@ def get_args():
 
 	parser = argparse.ArgumentParser(description="execute command across cluster")
 
-	parser.add_argument('-verbose',
+	parser.add_argument('-p','--password',
+ 		action='store_true',
+                help="use passwords from config file instead of ssh keys")
+
+
+	parser.add_argument('-l','--logging',
 	        required=False,
-	        type=str,
-	        default='Y',
-	        help="verbose (default: Y)")
+	        action='store_true',
+	        help="log only instead of printing commands to screen")
 
 
-	parser.add_argument('-output',
+	parser.add_argument('-s','--silent',
 	        required=False,
-	        type=str,
-	        default='Y',
-	        help="hide output (default: Y)")
+	        action='store_true',
+	        help="do not show output (default: show output)")
 
 
-	parser.add_argument('-cmd',
+	parser.add_argument('-c','--command',
 		required=False,
 		type=str,
 		default='echo $(hostname), $(hostname -I)',
 		help="command to execute (default: 'hostname -I')")
 
-	parser.add_argument('-master',
+	parser.add_argument('-m','--master',
 		required=False,
-		type=str,
-		default='N',
-		help='include master node (default:  N)')
+		action='store_true',
+		help='include execution on master node')
 
 
-	parser.add_argument('-nodes',
+	parser.add_argument('-n','--nodes',
 	        required=False,
 		nargs='*',
 	        type=int,
@@ -64,13 +66,6 @@ def get_args():
 	args = parser.parse_args()
 
 
-	if args.output in ['Y','y']:
-		args.output = False
-
-	else:
-		args.output = True
-
-
 	return args
 
 
@@ -79,25 +74,32 @@ def exec_across_nodes(args):
 
 	for node,node_ip in cluster.nodes.items():
 
-		if (node==0 and not args.master in ['Y','y'] and args.nodes==99) \
+		if (node==0 and not args.master and args.nodes==99) \
 			or (args.nodes!=99 and node not in args.nodes):
-			
+
 			continue
 
 
-		if args.verbose in ['Y','y']:
+		if not args.logging:
                 	print('\n >>> ATTEMPTING NODE: {}...'.format(node))
+
+
+
+		if args.password:
+			credentials = {'password': cluster.passwords[node]}
+
+		else:
+			credentials = {'password': cluster.passwords[node],
+                                       'key_filename':cluster.sshkeys[node]}
 
 
 		try:
 			c = Connection(
 				node_ip,
 				user = cluster.users[node],
-				connect_kwargs={
-					'password': cluster.passwords[node],
-					'key_filename':cluster.sshkeys[node]})
+				connect_kwargs = credentials)
 
-			result = c.run(args.cmd, hide = args.output)
+			result = c.run(args.command, hide = args.silent)
 
 		except:
 			print('Problem with node {}\n'.format(node))
