@@ -37,10 +37,10 @@ def get_args():
 	        help="log only instead of printing commands to screen")
 
 
-	parser.add_argument('-s','--silent',
+	parser.add_argument('-q','--quiet',
 	        required=False,
 	        action='store_true',
-	        help="do not show output (default: show output)")
+	        help="execute quietly without showing output (default: show output)")
 
 
 	parser.add_argument('-c','--command',
@@ -99,7 +99,7 @@ def exec_across_nodes(args):
 				user = cluster.users[node],
 				connect_kwargs = credentials)
 
-			result = c.run(args.command, hide = args.silent)
+			result = c.run(args.command, hide = args.quiet)
 
 		except:
 			print('Problem with node {}\n'.format(node))
