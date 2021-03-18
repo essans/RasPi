@@ -81,18 +81,23 @@ Create a ``myconfigs.py`` file in the same folder and copy the configs from here
         # execute command across cluster
 
         # optional arguments:
-        # -h, --help  show this help message and exit
-        # -v V        Verbose (default: Y)
-        # -c C        command to execute (default: 'hostname -I')
-        # -m M        include master node (default: N)
-        # -n N        node number (default: 99 for all)
+        # -h, --help            show this help message and exit
+        # -p, --password        use passwords from config file instead of ssh keys
+        # -l, --logging         log only instead of printing commands to screen
+        # -s, --silent          do not show output (default: show output)
+        # -c COMMAND, --command COMMAND
+                                command to execute (default: 'hostname -I')
+        # -m, --master          include execution on master node
+        
+        # -n [NODES [NODES ...]], --nodes [NODES [NODES ...]]
+                                node numbers (default: 99 for all)
 
 
 Test first using the following which should flash the green LED across each node including the master-node:
 
 .. code-block::  bash
 
-        ./cluster_config.py -c 'sudo sh -c "echo 1 >/sys/class/leds/led0/brightness"' -m Y
+        ./cluster_config.py -p -c 'sudo sh -c "echo 1 >/sys/class/leds/led0/brightness"' -m Y
     
 -----
 
@@ -103,11 +108,11 @@ Update/Upgrade OS
 
     .. code-block::  bash
 
-        ./cluster_config.py -c 'sudo apt-get -y update'
+        ./cluster_config.py -p -c 'sudo apt-get -y update'
 
-        ./cluster_config.py -c 'sudo apt-get -y upgrade'
+        ./cluster_config.py -p -c 'sudo apt-get -y upgrade'
 
-        ./cluster_config.py -c 'sudo shutdown -r now’
+        ./cluster_config.py -p -c 'sudo shutdown -r now’
 
 -----
 
@@ -118,15 +123,15 @@ update localizations
 
     .. code-block:: bash
 
-        ./cluster_config.py -c ‘timedatectl'
+        ./cluster_config.py -p -c ‘timedatectl'
     
 Raspberry Pi boards usually ship with the UK localization so we’ll need to update if we’re based in New York and the master is configured as such. The following will list available timezones: ``timedatectl list-timezones``.  And then to update:
 
     .. code-block:: bash
 
-        ./cluster_config -c 'sudo timedatectl set-timezone America/New_York'
+        ./cluster_config -p -c 'sudo timedatectl set-timezone America/New_York'
 
-        ./cluster_config.py -c ‘timedatectl'  # to confirm updates
+        ./cluster_config.py -p -c ‘timedatectl'  # to confirm updates
 
 -----
 
@@ -138,31 +143,31 @@ Update locale settings
 
     .. code-block:: bash
 
-        ./cluster_config.py -c ‘locale'
+        ./cluster_config.py -p -c ‘locale'
         
 If updates are needed then first check that the locale is available:
 
 .. code-block:: bash
     
-    ./cluster_config.py -c ‘locale -a'
+    ./cluster_config.py -p -c ‘locale -a'
     
 
 If not then generate as needed: In this case for en_US first uncomment that line in the locale.gen file if necessary.
 
 .. code-block:: bash
 
-    ./cluster_config.py -c 'sudo sed -i "/en_US.UTF-8/s/^#[[:space:]]//g" /etc/locale.gen' -n 1
+    ./cluster_config.py -p -c 'sudo sed -i "/en_US.UTF-8/s/^#[[:space:]]//g" /etc/locale.gen' -n 1
 
     # removes ‘# ‘
     # to recomment a line with a trailing space:
     # sed -i '/<pattern>/s/^/# /g' file
 
 
-    ./cluster_config.py -c 'sudo locale-gen'
+    ./cluster_config.py -p -c 'sudo locale-gen'
     
-    ./cluster_config.py -c 'sudo update-locale LANG=en_US.UTF-8'
+    ./cluster_config.py -p -c 'sudo update-locale LANG=en_US.UTF-8'
     
-    ./cluster_config.py -c 'locale'  # to confirm
+    ./cluster_config.py -p -c 'locale'  # to confirm
  
 -----
     
@@ -171,11 +176,11 @@ Change passwords
 
 .. code-block:: bash
 
-    .cluster_config.py -c 'echo -e "raspberry\nNewPassword\nNewPassword" | passwd'
+    .cluster_config.py --p c 'echo -e "raspberry\nNewPassword\nNewPassword" | passwd'
     
     # where NewPassword is the desired new password
     
-Now update the passwords in the ``cluster_config.py`` script
+Now update the passwords in the ``myconfigs.py`` script
 
 ------
 
@@ -196,7 +201,7 @@ First I'll confirm the hostname of each node:
 
 .. code-block:: bash
 
-        .cluster_config.py -c 'hostname -s'
+        .cluster_config.py -p -c 'hostname -s'
         
 These should all come back as "raspberrypi".  In the above mentioned files I need to replace "raspberrypi" with "node1", "node2" etc.  This could be done one at a time by passing the following as ``-c`` args to ``./cluster_config.py``:
 
@@ -230,13 +235,13 @@ It's more interesting though to consider a "wrapper" script that calls ``./clust
 
         for node,command in cmds_to_execute.items():
 
-                cmd_to_send = "./cluster_config.py -c " + command + " -n " +str(node)
+                cmd_to_send = "./cluster_config.py -p -c " + command + " -n " +str(node)
 
                 subprocess.call(cmd_to_send, shell = True)  
                 
 Above script is saved as ``cluster_commands.py`` and then run from the command line.  Then re-run after updating the script with "/etc/hostname" instead of "/etc/hosts".
 
-Lastly, reboot the worker nodes with ``./cluster_config.py -c 'sudo shutdown -r now’`` and confirm across the nodes that the hostnames have been updated.
+Lastly, reboot the worker nodes with ``./cluster_config.py -p -c 'sudo shutdown -r now’`` and confirm across the nodes that the hostnames have been updated.
 
 ------
 
@@ -259,28 +264,28 @@ The ``/etc/hosts`` file needs to be further updated with ip addresses and corres
         
 (2) Copy this file to the other nodes:
 
-The following script ``cluster_xfer.py`` accept arguments as described in the help and calls linux scp via a loop:
+The following script ``cluster_xfer.py`` accepts arguments as described in the help and calls linux scp via a loop:
 
-https://github.com/essans/RasPi/blob/master/Clusters/cluster_xfer.py
+https://github.com/essans/RasPi/blob/master/Clusters/cluster_xfer_serial.py
 
 But first create the required directories on each node:
 
 .. code-block:: python
      
-        ./cluster_config.py -c 'mkdir code'       
-        ./cluster_config.py -c 'cd code && sudo mkdir python'
+        ./cluster_config.py -p -c 'mkdir code'       
+        ./cluster_config.py -p -c 'cd code && sudo mkdir python'
 
-        ./cluster_config.py -c 'sudo chmod -R 0777 code'   #full permissions
+        ./cluster_config.py -p -c 'sudo chmod -R 0777 code'   #full permissions
 
 Then copy the file across to each node, and then append the ``node`` file information to the ``/etc/hosts`` file:
 
 .. code-block:: python
 
-        ./cluster_xfer -f nodes -d '/home/pi/python'  #copy "node" file to all nodes
+        ./cluster_xfer_serial.py -p -f nodes -d '/home/pi/python'  #copy "node" file to all nodes
         
         cat nodes | sudo tee -a /etc/hosts  #update /etc/hosts file on master node
 
-        ./cluster_config.py -c 'cd code/python && cat nodes | sudo tee -a /etc/hosts' #same on workers
+        ./cluster_config.py -p -c 'cd code/python && cat nodes | sudo tee -a /etc/hosts' #same on workers
         
         
 Then reboot everything
