@@ -93,7 +93,9 @@ def exec_across_nodes(args):
 			c = Connection(
 				node_ip,
 				user = cluster.users[node],
-				connect_kwargs={'password': cluster.passwords[node]})
+				connect_kwargs={
+					'password': cluster.passwords[node],
+					'key_filename':cluster.sshkey[node]})
 
 			result = c.run(args.cmd, hide = args.output)
 
