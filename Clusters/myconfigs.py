@@ -26,3 +26,10 @@ class cluster1:
                 3:'blah',
                 4:'blah',
                 5:'blah'}
+    
+    sshkeys = {0:'blah',
+                1:'blah',
+                2:'blah',
+                3:'blah',
+                4:'blah',
+                5:'blah'}
