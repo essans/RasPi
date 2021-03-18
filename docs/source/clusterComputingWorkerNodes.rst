@@ -287,4 +287,62 @@ Then reboot everything
 
 Now each node has the information required to reach other nodes.  From any node (eg master) you can now ssh into another node (eg 2) with ``ssh pi@node2``.
 
+------
+
+Create/copy ssh-keys
+^^^^^^^^^^^^^^^^^^^^
+
+To simplify ssh access to the worker nodes from the master create public and private keys, and then copy the private keys to each worker.
+
+.. code-block:: bash
+
+        cd ~/.ssh
+
+        ssh-keygen -t ed25519
+        
+When prompted leave the passphrase blank and set the name to id_cluster1
+
+.. code-block:: bash
+
+        ssh-copy-id pi@node1
+        ssh-copy-id pi@node2
+        ssh-copy-id pi@node3
+        ssh-copy-id pi@node4
+        ssh-copy-id pi@node5
+
+Now ``ssh`` into each node using the password and update various configurations by opening:
+
+.. code-block:: bash
+
+        sudo nano /etc/ssh/sshd_config
+        
+Uncomment/enable ``PubkeyAuthentication yes`` and enable ``PasswordAuthentication no`` and then reboot the node.  The above operations can either be done one at a time or programmatically as shown earlier.
+
+The usual way to ``ssh`` into each node (eg node1) would be to ``ssh -i ~/.ssh/id_cluster1 pi@node1``.  To simplify the process create a ``config`` file in the ``~/.ssh`` folder with the following entries and then save:
+
+.. code-block:: bash
+
+        Host node1
+             User pi
+             IdentityFile ~/.ssh/id_cluster1
+
+        Host node2
+             User pi
+             IdentityFile ~/.ssh/id_cluster1
+
+        Host node3
+             User pi
+             IdentityFile ~/.ssh/id_cluster1
+
+        Host node4
+             User pi
+             IdentityFile ~/.ssh/id_cluster1
+
+        Host node5
+             User pi
+             IdentityFile ~/.ssh/id_cluster1
+             
+Now we can ssh into another node (say node1) using a simple ``ssh node1``.
+
+---
 
