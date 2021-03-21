@@ -17,7 +17,19 @@ Execute across cluster:
 
 .. code-block:: bash
 
-  ./cluster_config.py -c 'echo 0 | sudo tee /sys/class/leds/led1/brightness' -m y
+  ./cluster_serial_exec.py -c 'echo 0 | sudo tee /sys/class/leds/led1/brightness' -m
   
 
 LED's will remain disabled unless turned back on by placing ``echo 1`` in the above, or upon shutdown.
+
+------
+
+Add useful commands as aliases to bashrc file
+---------------------------------------------
+
+.. code-block:: bash
+
+  alias ledoff="echo 0 | sudo tee /sys/class/leds/led1/brightness"
+  alias ledoff="echo 0 | sudo tee /sys/class/leds/led1/brightness"
+  
+  alias clustercmd="python3 ~/code/python/cluster/clustercmd"
