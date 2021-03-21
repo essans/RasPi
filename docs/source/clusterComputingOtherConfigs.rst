@@ -24,7 +24,7 @@ LED's will remain disabled unless turned back on by placing ``echo 1`` in the ab
 
 ------
 
-Add useful commands as aliases to bashrc file
+Add useful commands as aliases to ``bashrc`` file
 ---------------------------------------------
 
 .. code-block:: bash
@@ -33,3 +33,12 @@ Add useful commands as aliases to bashrc file
   alias ledoff="echo 0 | sudo tee /sys/class/leds/led1/brightness"
   
   alias clustercmd="python3 ~/code/python/cluster/clustercmd"
+  
+We can also update the bashrc file on other nodes:
+
+.. code-block:: bash
+
+  clustercmd -c "echo ' ' >> ~/.bashrc
+  clustercmd -c "echo 'alias ledoff=\"echo 0 | sudo tee /sys/class/leds/led1/brightness blah\"' >> ~/.bashrc
+  clustercmd -c "echo 'alias ledon=\"echo 0 | sudo tee /sys/class/leds/led1/brightness blah\"' >> ~/.bashrc
+  
