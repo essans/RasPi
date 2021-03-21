@@ -45,3 +45,5 @@ We can also update the bashrc file on other nodes:
   
   clustercmd -c "echo 'alias ledon=\"echo 0 | sudo tee /sys/class/leds/led1/brightness blah\"' >> ~/.bashrc"
   
+  clustercmd -c "source ~/.bashrc"
+  
