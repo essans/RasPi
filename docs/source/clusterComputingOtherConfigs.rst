@@ -38,9 +38,10 @@ We can also update the bashrc file on other nodes:
 
 .. code-block:: bash
 
-  clustercmd -c "echo ' ' >> ~/.bashrc
+  clustercmd -c "echo ' ' >> ~/.bashrc"
+  clustercmd -c "echo '# my commands ' >> ~/.bashrc"
   
-  clustercmd -c "echo 'alias ledoff=\"echo 0 | sudo tee /sys/class/leds/led1/brightness blah\"' >> ~/.bashrc
+  clustercmd -c "echo 'alias ledoff=\"echo 0 | sudo tee /sys/class/leds/led1/brightness blah\"' >> ~/.bashrc"
   
-  clustercmd -c "echo 'alias ledon=\"echo 0 | sudo tee /sys/class/leds/led1/brightness blah\"' >> ~/.bashrc
+  clustercmd -c "echo 'alias ledon=\"echo 0 | sudo tee /sys/class/leds/led1/brightness blah\"' >> ~/.bashrc"
   
