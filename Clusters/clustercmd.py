@@ -2,6 +2,8 @@
 
 #Execute commands from master node across 1 or all worker nodes, with option to also run on master.
 
+# run chmod u+x clustercmd.py from command line
+
 # ./clustercmd --help  <--- see all options
 
 # ./clustercmd -c 'hostname -I', -m    <- execute 'hostname -I' across all nodes incl. Master
@@ -11,6 +13,9 @@
 # ./clustercmd -c 'hostname -I', -p <- lowercase -p to use passwords instead of sshkeys 
 
 # ./clustercmd -c 'hostname -I', -P <- capital -P to execute in parallel
+
+# add following line to ~/.bashrc file to enable global execution without './'
+# alias clustercmd="python3 ~/code/python/cluster"   <replace with actual location of .py file>
 
 # need to add logging
 
