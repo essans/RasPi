@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-#!/usr/bin/env python3
-
 import subprocess
 import argparse
 from myconfigs import cluster1 as cluster
