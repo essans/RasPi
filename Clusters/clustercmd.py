@@ -1,5 +1,23 @@
 #!/usr/bin/env python3
 
+#Execute commands from master node across 1 or all worker nodes, with option to also run on master.
+
+# ./clustercmd --help  <--- see all options
+
+# ./clustercmd -c 'hostname -I', -m    <- execute 'hostname -I' across all nodes incl. Master
+
+# ./clustercmd -c 'hostname -I', -n 0 1 5 <- execute across nodes 0 (master), 1 and 5 only
+
+# ./clustercmd -c 'hostname -I', -p <- lowercase -p to use passwords instead of sshkeys 
+
+# ./clustercmd -c 'hostname -I', -P <- capital -P to execute in parallel
+
+# need to add logging
+
+###################################
+
+
+
 import sys
 import argparse
 import subprocess
