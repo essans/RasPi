@@ -1,17 +1,17 @@
-### Things to remember when using cluster_config.py
+### Things to remember when using clustercmd.py
 
 
 Chaining commands:
 
 ```
-./...py -c 'cd code/python && sudo cp /etc/hosts test_hosts'
+./clustercmd -c 'cd code/python && sudo cp /etc/hosts test_hosts'
 
 ```
 
 ```
-./...py -c 'cd code && sudo mkdir python'
+./clustercmd -c 'cd code && sudo mkdir python'
 
-./....py -c 'sudo chmod -R 0777 code'   #full permissions
+./clustercmd -c 'sudo chmod -R 0777 code'   #full permissions
 
 
 ```
