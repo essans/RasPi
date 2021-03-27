@@ -315,6 +315,9 @@ When prompted leave the passphrase blank and set the name to id_cluster1
         ssh-copy-id pi@node4
         ssh-copy-id pi@node5
 
+        cat id_cluster1.pub >> authorized_keys    # needed if hdfs installed later
+
+
 Now ``ssh`` into each node using the password and update various configurations by opening:
 
 .. code-block:: bash
