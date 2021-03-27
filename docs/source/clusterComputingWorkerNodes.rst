@@ -327,6 +327,14 @@ The usual way to ``ssh`` into each node (eg node1) would be to ``ssh -i ~/.ssh/i
 
 .. code-block:: bash
 
+        Host localhost
+             User pi
+             IdentityFile ~/.ssh/id_cluster1
+
+        Host node0
+             User pi
+             IdentityFile ~/.ssh/id_cluster1
+
         Host node1
              User pi
              IdentityFile ~/.ssh/id_cluster1
